@@ -46,7 +46,7 @@ entity UART is
 end UART;
 
 architecture Behavioral of UART is
-	type state is (waiting, transmiting, stop);
+	type state is (waiting, transmiting, stoping);
 	signal nowState: state := waiting;
 	signal recibido: STD_LOGIC_VECTOR(7 downto 0) := "000000000";
 	signal start, stop: STD_LOGIC := "0";
@@ -58,21 +58,30 @@ begin
 	begin
 		if clk'event AND clk then
 			if ticks = 2600 then
-				if start = "0" AND rx = "0" then
-					start := "1";
-				elsif stop = "0" AND start = "1" AND position < 8 then
-					recibido(position) := rx;
-					position := position + 1;
-				elsif rx = "1" then
-					stop := "1";
-				elsif stop = "1" then
-					brec := recibido;
-					position := 0;
-					start := "0";
-				end if;
+				CASE nowState IS
+					WHEN waiting => 
+						IF rx = "0" THEN
+							nowState:=transmiting;
+						END IF;
+					WHEN transmiting => 
+						IF position < 8 THEN
+							recibido(positon) := rx;
+							position := position + 1;
+						ELSIF rx = "1" THEN
+							nowState:=stoping;
+							position := 0;
+						END IF;
+					WHEN stoping =>
+						IF rx = "1" THEN
+							brec := recibido;
+							rec_done := "1";
+						END IF;
+						nowState := waiting;				
+				END CASE;
 				ticks := 0;
-			end if;
-			ticks := ticks + 1;
+			ELSE
+				ticks := ticks + 1;
+			END IF;
 		end if;
 	end process;
 

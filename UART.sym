@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="UART">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2016-5-9T15:52:54</timestamp>
+    <timestamp>2016-5-9T19:4:30</timestamp>
     <pin polarity="Input" x="0" y="-352" name="rx" />
     <pin polarity="Input" x="0" y="-288" name="clk" />
     <pin polarity="Input" x="0" y="-224" name="rst" />

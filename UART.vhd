@@ -55,7 +55,7 @@ begin
 		variable ticks:integer := 0;
 		variable position:integer := 0;
 	begin
-		if clk'event AND clk = '0' AND not clk'stable then
+		if clk'event AND clk = '0' then
 			if ticks = 5208 then -- 50 Mhz / 9600 bps
 				CASE recState IS
 					WHEN waiting => 

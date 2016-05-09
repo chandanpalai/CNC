@@ -85,7 +85,7 @@ BEGIN
           tdone => tdone
         );
 
-	clk <= not clk after 1 ns;
+	clk <= not clk after 0.5 ns;
 	rx <= '1' after 2 ns,
 			'0' after 5203 ns,
 			'1' after 10415 ns,

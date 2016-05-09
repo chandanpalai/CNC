@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "D:/IS/CNC/UARTTest_isim_beh.exe" -prj "D:/IS/CNC/UARTTest_beh.prj" "work.UARTTest" 
+-intstyle "ise" -incremental -o "K:/IS/CNC/UARTTest_isim_beh.exe" -prj "K:/IS/CNC/UARTTest_beh.prj" "work.UARTTest" 

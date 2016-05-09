@@ -15,7 +15,7 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
@@ -35,10 +35,11 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="UART.syr"/>
     <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="UART.tfi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="UART.xst"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="UARTTest_beh.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="UARTTest_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="UARTTest_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="UARTTest_isim_beh.wdb"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="UARTTest_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="UART_envsettings.html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="UART_ngdbuild.xrpt"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="UART_summary.html"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="UART_vhdl.prj"/>
@@ -61,7 +62,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1462809183" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1462809183">
+    <transform xil_pn:end_ts="1462821958" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1462821958">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="UART.vhd"/>
@@ -79,13 +80,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1462809183" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1462809183">
+    <transform xil_pn:end_ts="1462821958" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1462821958">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="UART.vhd"/>
       <outfile xil_pn:name="UARTTest.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1462809189" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-8782092542971901616" xil_pn:start_ts="1462809183">
+    <transform xil_pn:end_ts="1462821971" xil_pn:in_ck="4528127091541998168" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-8782092542971901616" xil_pn:start_ts="1462821958">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -97,7 +98,7 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1462809190" xil_pn:in_ck="573354376412038123" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1389109644089436371" xil_pn:start_ts="1462809189">
+    <transform xil_pn:end_ts="1462821975" xil_pn:in_ck="573354376412038123" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1389109644089436371" xil_pn:start_ts="1462821971">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -134,20 +135,20 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1462808735" xil_pn:in_ck="3709823575756" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="2501064273212321111" xil_pn:start_ts="1462808729">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1462820416" xil_pn:in_ck="3709823575756" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="2501064273212321111" xil_pn:start_ts="1462820371">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
-      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="UART.lso"/>
       <outfile xil_pn:name="UART.ngc"/>
       <outfile xil_pn:name="UART.ngr"/>
       <outfile xil_pn:name="UART.prj"/>
+      <outfile xil_pn:name="UART.stx"/>
       <outfile xil_pn:name="UART.syr"/>
       <outfile xil_pn:name="UART.xst"/>
+      <outfile xil_pn:name="UARTTest_beh.prj"/>
       <outfile xil_pn:name="UARTTest_stx_beh.prj"/>
       <outfile xil_pn:name="UART_vhdl.prj"/>
       <outfile xil_pn:name="UART_xst.xrpt"/>
@@ -162,7 +163,8 @@
     <transform xil_pn:end_ts="1462806027" xil_pn:in_ck="-4597240088912320374" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2279644870015325895" xil_pn:start_ts="1462806020">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="UART.bld"/>
       <outfile xil_pn:name="UART.ngd"/>
       <outfile xil_pn:name="UART_ngdbuild.xrpt"/>

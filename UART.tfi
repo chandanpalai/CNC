@@ -1,0 +1,18 @@
+
+
+
+// Instantiate the module
+UART instance_name (
+    .rx(rx), 
+    .tx(tx), 
+    .clk(clk), 
+    .rst(rst), 
+    .brec(brec), 
+    .rec_pending(rec_pending), 
+    .rec_done(rec_done), 
+    .btrans(btrans), 
+    .tstart(tstart), 
+    .tdone(tdone)
+    );
+
+

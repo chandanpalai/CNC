@@ -1,84 +1,35 @@
 ISim log file
-Running: K:\IS\CNC\UARTTest_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb K:/IS/CNC/UARTTest_isim_beh.wdb 
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
+Running: E:\IS\CNC\UARTTest_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb E:/IS/CNC/UARTTest_isim_beh.wdb 
+ISim P.40xd (signature 0x8ef4fb42)
+This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# restart
-# step
+ISim P.40xd (signature 0x8ef4fb42)
+This is a Full version of ISim.
+# run 1000 ns
 Simulator is doing circuit initialization process.
-Stopped at time : 0 fs : File "K:/IS/CNC/UARTTest.vhd" Line 88
-# step
-Stopped at time : 0 fs : File "K:/IS/CNC/UARTTest.vhd" Line 89
-# step
-Stopped at time : 0 fs : File "K:/IS/CNC/UART.vhd" Line 58
-# run all
 Finished circuit initialization process.
-Stopped at time : 5209 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# step
-Stopped at time : 5209500 ps : File "K:/IS/CNC/UARTTest.vhd" Line 88
-# step
-Stopped at time : 5209500 ps : File "K:/IS/CNC/UART.vhd" Line 58
-# step
-Stopped at time : 5210 ns : File "K:/IS/CNC/UARTTest.vhd" Line 88
-# step
-Stopped at time : 5210 ns : File "K:/IS/CNC/UART.vhd" Line 58
-# step
-Stopped at time : 5210 ns : File "K:/IS/CNC/UART.vhd" Line 59
-# step
-Stopped at time : 5210 ns : File "K:/IS/CNC/UART.vhd" Line 83
+ISim P.40xd (signature 0x8ef4fb42)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
+# run 4000 ns
 # run all
-Stopped at time : 10418 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# step
-Stopped at time : 10418 ns : File "K:/IS/CNC/UART.vhd" Line 67
-# step
-Stopped at time : 10418 ns : File "K:/IS/CNC/UART.vhd" Line 68
-# step
-Stopped at time : 10418 ns : File "K:/IS/CNC/UART.vhd" Line 69
-# step
-Stopped at time : 10418 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 15627 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 15627 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 20836 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 20836 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 26045 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 26045 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 31254 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 31254 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 36463 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 36463 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 41672 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 41672 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 46881 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 46881 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 52090 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 52090 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 57299 ns : File "K:/IS/CNC/UART.vhd" Line 60
-# run all
-Stopped at time : 57299 ns : File "K:/IS/CNC/UART.vhd" Line 81
-# run all
-Stopped at time : 4967891 ns : File "K:/IS/CNC/UARTTest.vhd" Line 88
+Stopped at time : 7470914 ns : File "E:/IS/CNC/UARTTest.vhd" Line 88

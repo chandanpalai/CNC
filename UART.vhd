@@ -48,20 +48,21 @@ end UART;
 architecture Behavioral of UART is
 	type state is (waiting, transmiting, stoping);
 	signal recState: state := waiting;
+	signal transState: state := waiting;
 	signal recibido: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 begin
 
-	process(clk)
+	process(clk) -- Mensaje del PC a la FPGA
 		variable ticks:integer := 0;
 		variable position:integer := 0;
 	begin
-		if clk'event AND clk = '0' then
-			if ticks = 5208 then -- 50 Mhz / 9600 bps
+		IF clk'event AND clk = '0' THEN
+			IF ticks = 5208 AND rec_pending = '0' THEN -- 50 Mhz / 9600 bps
 				CASE recState IS
 					WHEN waiting => 
 						IF rx = '0' THEN
 							recState <= transmiting;
-							rec_pending <= '1';
+							position := 0;
 						END IF;
 					WHEN transmiting => 
 						IF position < 8 THEN
@@ -74,15 +75,48 @@ begin
 					WHEN stoping =>
 						IF rx = '1' THEN
 							brec <= recibido;
+							rec_pending <= '1';
 						END IF;
 						recState <= waiting;
-						rec_pending <= '0';
 				END CASE;
 				ticks := 0;
-			ELSE
+			ELSIF rec_pending = '0'
 				ticks := ticks + 1;
+			ELSE
+				ticks := 0;   -- Evitar que el contador siga mientra no se lea lo que hay en el vector de salida
 			END IF;
-		end if;
+			IF rec_done = '1' THEN -- Cuando se lee lo que hemos puesto en el vector de salida
+				rec_pending <= '0'; -- volvemos a permitir la lectura
+			END IF;
+		END IF;
+	end process;
+	
+	process(clk) -- Mensaje de la FPGA al PC
+		variable ticks:integer := 0;
+		variable posicion:integer := 0;
+	begin
+		IF clk'event AND clk = '0' AND tstart = '1' THEN
+			IF ticks = 5208 THEN
+				CASE transState IS
+					WHEN waiting =>
+						tx <= '0'; -- Comenzamos la transmision
+						position := 0;
+						transState <= transmiting;
+					WHEN transmiting =>
+						IF position < 8 THEN
+							tx <= btrans(position);
+							position := position + 1;
+						ELSE
+							tx <= '1';
+							transState <= stopping;
+						END IF;
+					WHEN stopping =>
+						tx <= '1';
+						transState <= waiting;
+						tdone <= '1';
+				END CASE;
+			END IF;
+		END IF;
 	end process;
 end Behavioral;
 

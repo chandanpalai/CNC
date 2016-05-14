@@ -1,0 +1,161 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    19:19:02 05/05/2016 
+-- Design Name: 
+-- Module Name:    UART - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+
+
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity UART is
+    Port ( rx : in  STD_LOGIC;
+           tx : out  STD_LOGIC;
+           clk : in  STD_LOGIC;
+           rst : in  STD_LOGIC;
+           brec : out  STD_LOGIC_VECTOR (7 downto 0);
+           rec_pending : out  STD_LOGIC;
+           rec_done : in  STD_LOGIC;
+           btrans : in  STD_LOGIC_VECTOR (7 downto 0);
+           tstart : in  STD_LOGIC;
+           tdone : out  STD_LOGIC);
+end UART;
+
+architecture Behavioral of UART is
+
+	type MAQ_rec is (WAITING,WCENTER,REC);
+	signal recState: MAQ_rec := WAITING;
+	
+	type MAQ_tx is (WAITING,TRANSMITING,STOPPING);
+	signal transState: MAQ_tx := waiting;
+	
+	signal recibido: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal RXF	:	std_logic_vector(1 downto 0) := (others=>'1');
+	signal rec_pending_i : std_logic := '0';
+--	signal muestra : std_logic := '0';
+	
+	constant BRR	: integer := (50E6/9600)-1;	-- Ciclos celda de bit
+	constant BRRM	: integer := BRR/2;				-- Ciclos media celda.
+	
+begin
+
+	rec_pending <= rec_pending_i;
+	
+	-- Proceso filtrado RX para evitar metaestabilidad.
+	process(clk,rst)
+	begin
+		if rst = '1' then
+			RXF <= (others=>'1');
+		elsif rising_edge(clk) then
+			RXF <= RXF(0) & rx;
+		end if;
+	end process;
+	
+	process(clk,rst) -- Mensaje del PC a la FPGA (Maquina de recepcion).
+		variable ticks:integer := 0;		-- Contador para reloj de recepcion
+		variable position:integer := 0;	-- Indice de bit recibido.
+	begin
+		if rst = '1' then
+			recState <= WAITING;
+			rec_pending_i <= '0';
+		elsif rising_edge(CLK) then
+			ticks := ticks + 1;
+			if ticks > BRR then
+				ticks := 0;
+			end if;
+			
+			if rec_done = '1' then -- Cuando se lee lo que hemos puesto en el vector de salida
+				rec_pending_i <= '0'; -- volvemos a permitir la lectura
+			end if;
+			
+			case recState is
+				when WAITING => 	-- Esperando bit start.
+					if RXF(1) = '0' then
+						ticks := 0;
+						recState <= WCENTER;
+					end if;
+				when WCENTER =>	-- Temporizamos al centro de celda del bit de start.
+					if ticks = BRRM then
+						if RXF(1) /= '0' then		-- Falso start por ruido.
+							recState <= WAITING;
+						else
+							ticks := 0;
+							position := 0;
+							recState <= REC;
+						end if;
+					end if;
+				when REC =>			-- Recibiendo dato.
+	--				muestra <= '0';
+					if ticks = BRR then
+	--					muestra <= '1';
+						if	position < 8 then
+							recibido(position) <= RXF(1);
+							position := position + 1;
+						elsif RXF(1) = '1' then	-- Bit stop correcto.
+							if rec_pending_i = '0' then	-- anterior ya retirado.
+								brec <= recibido;
+								rec_pending_i <= '1';
+							end if;
+							recState <= WAITING;
+						end if;
+					end if;
+				when others =>
+					recState <= WAITING;
+			end case;
+		end if;
+	end process;
+
+
+	process(clk) -- Mensaje de la FPGA al PC
+		variable ticks:integer := 0;
+		variable position:integer := 0;
+	begin
+		IF clk'event AND clk = '0' AND tstart = '1' THEN
+			IF ticks = 5208 THEN
+				CASE transState IS
+					WHEN waiting =>
+						tx <= '0'; -- Comenzamos la transmision
+						position := 0;
+						transState <= transmiting;
+					WHEN transmiting =>
+						IF position < 8 THEN
+							tx <= btrans(position);
+							position := position + 1;
+						ELSE
+							tx <= '1';
+							transState <= stopping;
+						END IF;
+					WHEN stopping =>
+						tx <= '1';
+						transState <= waiting;
+						tdone <= '1';
+				END CASE;
+			END IF;
+		END IF;
+	end process;
+end Behavioral;
+

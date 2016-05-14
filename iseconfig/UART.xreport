@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-05-12T17:21:42</DateModified>
+  <DateModified>2016-05-14T15:00:54</DateModified>
   <ModuleName>UART</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>E:/IS/CNC/iseconfig/UART.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>E:/IS/CNC\</ImplementationReportsDirectory>
+  <SavedFilePath>K:/IS/CNC/iseconfig/UART.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>K:/IS/CNC\</ImplementationReportsDirectory>
   <DateInitialized>2016-05-06T00:01:05</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

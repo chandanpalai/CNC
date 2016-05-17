@@ -71,6 +71,7 @@ ARCHITECTURE behavior OF UART_TB IS
    signal tdone : std_logic;
 
 	signal data : std_logic_vector(7 downto 0) := X"55";
+	signal data_to_send : std_logic_vector(7 downto 0) := X"10";
 	
    -- Clock period definitions
    constant clk_period : time := 20 ns;
@@ -110,7 +111,17 @@ BEGIN
 		else
 			rec_done <= '0';
 		end if;
+		if tdone = '1' then -- transfer tests
+			wait for 1 ms;
+			tstart <= '0';
+		elsif tstart = '0' then
+			wait for 100 ns;
+			btrans <= data_to_send;
+			wait for 100ns;
+			tstart <= '1';
+		end if;
 	end process;
+	
 
    -- Stimulus process
    stim_proc: process

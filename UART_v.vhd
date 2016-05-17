@@ -56,6 +56,7 @@ architecture Behavioral of UART is
 	signal recibido: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 	signal RXF	:	std_logic_vector(1 downto 0) := (others=>'1');
 	signal rec_pending_i : std_logic := '0';
+	signal tdone_i : std_logic := '0';
 --	signal muestra : std_logic := '0';
 	
 	constant BRR	: integer := (50E6/9600)-1;	-- Ciclos celda de bit
@@ -129,13 +130,22 @@ begin
 		end if;
 	end process;
 
-
-	process(clk) -- Mensaje de la FPGA al PC
+	tdone <= tdone_i;
+	process(clk, rst) -- Mensaje de la FPGA al PC
 		variable ticks:integer := 0;
 		variable position:integer := 0;
 	begin
-		IF clk'event AND clk = '0' AND tstart = '1' THEN
-			IF ticks = 5208 THEN
+		IF rst = '1' OR tstart = '0' OR tdone_i = '1' THEN
+			transState <= WAITING;
+			tx <= '1';
+			position := 0;
+		ELSIF rising_edge(CLK) THEN
+			ticks := ticks + 1;
+			IF ticks >  BRR THEN
+				ticks := 0;
+			END IF;
+			
+			IF ticks = BRR THEN
 				CASE transState IS
 					WHEN waiting =>
 						tx <= '0'; -- Comenzamos la transmision
@@ -152,7 +162,7 @@ begin
 					WHEN stopping =>
 						tx <= '1';
 						transState <= waiting;
-						tdone <= '1';
+						tdone_i <= '1';
 				END CASE;
 			END IF;
 		END IF;

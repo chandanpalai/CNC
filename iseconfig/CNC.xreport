@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-05-25T21:43:39</DateModified>
+  <DateModified>2016-05-25T22:45:44</DateModified>
   <ModuleName>CNC</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2016-05-25T22:34:07</SummaryTimeStamp>
   <SavedFilePath>M:/IS/CNC/iseconfig/CNC.xreport</SavedFilePath>
   <ImplementationReportsDirectory>M:/IS/CNC</ImplementationReportsDirectory>
   <DateInitialized>2016-05-25T21:43:28</DateInitialized>

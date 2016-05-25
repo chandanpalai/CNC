@@ -34,12 +34,6 @@ entity CNC is
            tx : out  STD_LOGIC;
            clk : in  STD_LOGIC;
 			  reset : in STD_LOGIC;
-           brec : out  STD_LOGIC_VECTOR (7 downto 0);
-           rec_pending : out  STD_LOGIC;
-           rec_done : in  STD_LOGIC;
-           btrans : in  STD_LOGIC_VECTOR (7 downto 0);
-           tstart : in  STD_LOGIC;
-           tdone : out  STD_LOGIC;
 			  bobina_x 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_y 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_z 	: out STD_LOGIC_VECTOR(3 downto 0)

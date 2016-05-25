@@ -21,22 +21,17 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+-- Divisor de dos vectores por restas sucesivas
 entity divisor is
-    Port ( dividendo : in  STD_LOGIC_VECTOR (13 downto 0);
-			  in_signal : in STD_LOGIC;
-           divisor : in  STD_LOGIC_VECTOR (7 downto 0);
-           clk : in  STD_LOGIC;
-           resultado : out  STD_LOGIC_VECTOR (7 downto 0);
-			  out_signal : out STD_LOGIC;
-           resto : out  STD_LOGIC_VECTOR (13 downto 0));
+	Port ( 
+		dividendo	: in  STD_LOGIC_VECTOR (13 downto 0); -- dividendo
+		in_signal 	: in STD_LOGIC; -- senal que marca el comienzo de la operacion
+		divisor 		: in  STD_LOGIC_VECTOR (7 downto 0); -- divisor
+		clk 			: in  STD_LOGIC; -- reloj
+		resultado 	: out  STD_LOGIC_VECTOR (7 downto 0); -- resultado de la operacion
+		out_signal 	: out STD_LOGIC; -- flag de completado
+		resto 		: out  STD_LOGIC_VECTOR (13 downto 0) -- resto de la operacion
+	);
 end divisor;
 
 architecture Behavioral of divisor is
@@ -48,9 +43,10 @@ begin
 	resto <= i_resto;
 	out_signal <= i_out_signal;
 	process(clk)
-		variable contador : integer := 0;
+		variable contador : integer := 0; -- contador de restas
 	begin
 		if rising_edge(clk) then
+			-- Controlamos que empiece y que no sea division por cero
 			if(in_signal = '1' and i_out_signal = '0' and divisor /= "00000000") then
 				if contador = 0 then
 					i_resto <= dividendo;
@@ -63,6 +59,7 @@ begin
 					contador := contador +1;
 				end if;
 			elsif divisor = "00000000" then
+				-- si la division es por cero marcamos como completado y salimos
 				i_out_signal <= '1';
 			elsif i_out_signal = '1' and in_signal = '0' then
 				contador := 0;

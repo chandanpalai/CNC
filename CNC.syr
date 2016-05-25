@@ -1,0 +1,1199 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.58 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.59 secs
+ 
+--> Reading design: CNC.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "CNC.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "CNC"
+Output Format                      : NGC
+Target Device                      : xc3s100e-5-vq100
+
+---- Source Options
+Top Module Name                    : CNC
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "M:/IS/CNC/divisor.vhd" in Library work.
+Entity <divisor> compiled.
+Entity <divisor> (Architecture <behavioral>) compiled.
+Compiling vhdl file "M:/IS/CNC/UART_v.vhd" in Library work.
+Entity <uart> compiled.
+Entity <uart> (Architecture <behavioral>) compiled.
+Compiling vhdl file "M:/IS/CNC/Assembler.vhd" in Library work.
+Architecture behavioral of Entity assembler is up to date.
+Compiling vhdl file "M:/IS/CNC/Secuenciador.vhd" in Library work.
+Entity <secuenciador> compiled.
+Entity <secuenciador> (Architecture <behavioral>) compiled.
+Compiling vhdl file "M:/IS/CNC/Motor.vhd" in Library work.
+Architecture behavioral of Entity motor is up to date.
+Compiling vhdl file "M:/IS/CNC/CNC.vhd" in Library work.
+Architecture behavioral of Entity cnc is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <CNC> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <UART> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Assembler> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Secuenciador> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Motor> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <divisor> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <CNC> in library <work> (Architecture <behavioral>).
+Entity <CNC> analyzed. Unit <CNC> generated.
+
+Analyzing Entity <UART> in library <work> (Architecture <behavioral>).
+Entity <UART> analyzed. Unit <UART> generated.
+
+Analyzing Entity <Assembler> in library <work> (Architecture <behavioral>).
+INFO:Xst:2679 - Register <rec_done> in unit <Assembler> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <Btrans> in unit <Assembler> has a constant value of 01001111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <Tstart> in unit <Assembler> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <Assembler> analyzed. Unit <Assembler> generated.
+
+Analyzing Entity <Secuenciador> in library <work> (Architecture <behavioral>).
+INFO:Xst:2679 - Register <vel_z> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <vel_y> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <vel_x> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
+Entity <Secuenciador> analyzed. Unit <Secuenciador> generated.
+
+Analyzing Entity <divisor> in library <work> (Architecture <behavioral>).
+Entity <divisor> analyzed. Unit <divisor> generated.
+
+Analyzing Entity <Motor> in library <work> (Architecture <behavioral>).
+INFO:Xst:1561 - "M:/IS/CNC/Motor.vhd" line 64: Mux is complete : default of case is discarded
+Entity <Motor> analyzed. Unit <Motor> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <UART>.
+    Related source file is "M:/IS/CNC/UART_v.vhd".
+    Found finite state machine <FSM_0> for signal <recState>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | waiting                                        |
+    | Power Up State     | waiting                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <transState>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Clock enable       | transState$not0000        (positive)           |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | waiting                                        |
+    | Power Up State     | waiting                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <brec>.
+    Found 1-bit register for signal <tx>.
+    Found 32-bit register for signal <position>.
+    Found 32-bit adder for signal <position$addsub0000> created at line 108.
+    Found 32-bit register for signal <position0>.
+    Found 32-bit adder for signal <position0$addsub0000> created at line 156.
+    Found 1-bit register for signal <rec_pending_i>.
+    Found 32-bit comparator greatequal for signal <rec_pending_i$cmp_ge0000> created at line 106.
+    Found 8-bit register for signal <recibido>.
+    Found 32-bit comparator less for signal <recState$cmp_lt0000> created at line 106.
+    Found 2-bit register for signal <RXF>.
+    Found 1-bit register for signal <tdone_i>.
+    Found 32-bit register for signal <ticks>.
+    Found 32-bit adder for signal <ticks$add0000> created at line 79.
+    Found 32-bit comparator greater for signal <ticks$cmp_gt0000> created at line 80.
+    Found 32-bit register for signal <ticks0>.
+    Found 32-bit adder for signal <ticks0$addsub0000> created at line 142.
+    Found 32-bit comparator greater for signal <ticks0$cmp_gt0000> created at line 143.
+    Found 32-bit comparator less for signal <transState$cmp_lt0000> created at line 154.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred 149 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
+Unit <UART> synthesized.
+
+
+Synthesizing Unit <Assembler>.
+    Related source file is "M:/IS/CNC/Assembler.vhd".
+WARNING:Xst:647 - Input <t_done> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found finite state machine <FSM_2> for signal <estado>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 19                                             |
+    | Inputs             | 11                                             |
+    | Outputs            | 12                                             |
+    | Clock              | clk                       (rising_edge)        |
+    | Clock enable       | rec_pending               (negative)           |
+    | Power Up State     | waiting                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_3> for signal <contador>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Clock enable       | contador$not0000          (positive)           |
+    | Power Up State     | 00000000000000000000000000000000               |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:643 - "M:/IS/CNC/Assembler.vhd" line 107: The result of a 4x7-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "M:/IS/CNC/Assembler.vhd" line 113: The result of a 8x4-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 2-bit register for signal <Instruccion>.
+    Found 4-bit register for signal <dato>.
+    Found 8-bit register for signal <i_dato_x>.
+    Found 8-bit adder for signal <i_dato_x$add0000> created at line 142.
+    Found 8-bit adder for signal <i_dato_x$addsub0000> created at line 141.
+    Found 8-bit register for signal <i_dato_y>.
+    Found 8-bit adder for signal <i_dato_y$add0001> created at line 149.
+    Found 8-bit adder for signal <i_dato_y$addsub0000> created at line 148.
+    Found 8-bit register for signal <i_dato_z>.
+    Found 32-bit register for signal <num_datos>.
+    Found 32-bit adder for signal <num_datos$addsub0000>.
+    Found 8-bit register for signal <resultado_entero2>.
+    Found 8x4-bit multiplier for signal <resultado_entero2$mult0000> created at line 113.
+    Found 8-bit register for signal <resultado_entero3>.
+    Found 4x7-bit multiplier for signal <resultado_entero3$mult0000> created at line 107.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred  78 D-type flip-flop(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   2 Multiplier(s).
+Unit <Assembler> synthesized.
+
+
+Synthesizing Unit <Motor>.
+    Related source file is "M:/IS/CNC/Motor.vhd".
+    Found finite state machine <FSM_4> for signal <recState>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 5                                              |
+    | Clock              | CLK                       (rising_edge)        |
+    | Reset              | Rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | waiting                                        |
+    | Power Up State     | waiting                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8x4-bit ROM for signal <bobina>.
+    Found 1-bit register for signal <Proc>.
+    Found 32-bit register for signal <pasos>.
+    Found 32-bit subtractor for signal <pasos$addsub0000> created at line 92.
+    Found 32-bit comparator greater for signal <recState$cmp_gt0000> created at line 105.
+    Found 32-bit register for signal <retardo>.
+    Found 32-bit subtractor for signal <retardo$addsub0000> created at line 106.
+    Found 3-bit updown counter for signal <step>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   1 Counter(s).
+	inferred  65 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <Motor> synthesized.
+
+
+Synthesizing Unit <divisor>.
+    Related source file is "M:/IS/CNC/divisor.vhd".
+    Found 32-bit register for signal <contador>.
+    Found 32-bit adder for signal <contador$addsub0000> created at line 59.
+    Found 14-bit comparator less for signal <contador$cmp_lt0000> created at line 53.
+    Found 32-bit 4-to-1 multiplexer for signal <contador$mux0000>.
+    Found 1-bit register for signal <i_out_signal>.
+    Found 14-bit comparator greatequal for signal <i_out_signal$cmp_ge0000> created at line 53.
+    Found 14-bit register for signal <i_resto>.
+    Found 14-bit subtractor for signal <i_resto$addsub0000> created at line 58.
+    Found 8-bit register for signal <i_resultado>.
+    Found 8-bit subtractor for signal <i_resultado$addsub0000> created at line 55.
+    Summary:
+	inferred  55 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred  32 Multiplexer(s).
+Unit <divisor> synthesized.
+
+
+Synthesizing Unit <Secuenciador>.
+    Related source file is "M:/IS/CNC/Secuenciador.vhd".
+WARNING:Xst:646 - Signal <resto2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <resto1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dist_z<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dist_y<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dist_x<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Register <divisor2> equivalent to <divisor1> has been removed
+    Register <in_signal2> equivalent to <in_signal1> has been removed
+INFO:Xst:1799 - State 10 is never reached in FSM <process_state>.
+    Found finite state machine <FSM_5> for signal <process_state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 41                                             |
+    | Inputs             | 9                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | process_state$and0000     (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 01                                             |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_6> for signal <div_state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 5                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Clock enable       | div_state$not0000         (positive)           |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Using one-hot encoding for signal <max$mux0000>.
+    Using one-hot encoding for signal <max$mux0001>.
+    Using one-hot encoding for signal <max>.
+WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 208: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 206: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 212: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 1-bit register for signal <direccion_x>.
+    Found 1-bit register for signal <direccion_y>.
+    Found 1-bit register for signal <direccion_z>.
+    Found 1-bit register for signal <order_done>.
+    Found 32-bit register for signal <dist_x>.
+    Found 8-bit comparator less for signal <dist_x$cmp_lt0000> created at line 167.
+    Found 9-bit subtractor for signal <dist_x$sub0000> created at line 168.
+    Found 9-bit subtractor for signal <dist_x$sub0001> created at line 171.
+    Found 32-bit register for signal <dist_y>.
+    Found 8-bit comparator less for signal <dist_y$cmp_lt0000> created at line 175.
+    Found 9-bit subtractor for signal <dist_y$sub0000> created at line 176.
+    Found 9-bit subtractor for signal <dist_y$sub0001> created at line 179.
+    Found 32-bit register for signal <dist_z>.
+    Found 8-bit comparator less for signal <dist_z$cmp_lt0000> created at line 189.
+    Found 9-bit subtractor for signal <dist_z$sub0000> created at line 190.
+    Found 9-bit subtractor for signal <dist_z$sub0001> created at line 193.
+    Found 14-bit register for signal <dividendo1>.
+    Found 32x8-bit multiplier for signal <dividendo1$mult0002> created at line 206.
+    Found 32x8-bit multiplier for signal <dividendo1$mult0003> created at line 212.
+    Found 14-bit register for signal <dividendo2>.
+    Found 32x8-bit multiplier for signal <dividendo2$mult0001> created at line 208.
+    Found 8-bit register for signal <divisor1>.
+    Found 8-bit register for signal <i_coordenada_destino_x>.
+    Found 8-bit register for signal <i_coordenada_destino_y>.
+    Found 8-bit register for signal <i_coordenada_destino_z>.
+    Found 8-bit register for signal <i_coordenada_x>.
+    Found 8-bit register for signal <i_coordenada_y>.
+    Found 8-bit register for signal <i_coordenada_z>.
+    Found 8-bit register for signal <i_distancia_x>.
+    Found 8-bit register for signal <i_distancia_y>.
+    Found 8-bit register for signal <i_distancia_z>.
+    Found 2-bit register for signal <i_instruccion>.
+    Found 1-bit register for signal <i_reset_engines>.
+    Found 1-bit register for signal <i_sending_order>.
+    Found 8-bit register for signal <i_velocidad_x>.
+    Found 8-bit register for signal <i_velocidad_y>.
+    Found 8-bit register for signal <i_velocidad_z>.
+    Found 1-bit register for signal <in_signal1>.
+    Found 3-bit register for signal <max>.
+    Found 32-bit comparator greater for signal <max$cmp_gt0000> created at line 183.
+    Found 32-bit comparator greater for signal <max$cmp_gt0001> created at line 197.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred 240 D-type flip-flop(s).
+	inferred   6 Adder/Subtractor(s).
+	inferred   3 Multiplier(s).
+	inferred   5 Comparator(s).
+Unit <Secuenciador> synthesized.
+
+
+Synthesizing Unit <CNC>.
+    Related source file is "M:/IS/CNC/CNC.vhd".
+WARNING:Xst:647 - Input <tstart> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <rec_done> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <rec_pending> is never assigned.
+WARNING:Xst:1306 - Output <brec> is never assigned.
+WARNING:Xst:647 - Input <btrans> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <tdone> is never assigned.
+WARNING:Xst:653 - Signal <order_pending> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:646 - Signal <order_done> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <CNC> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 8x4-bit ROM                                           : 3
+# Multipliers                                          : 5
+ 32x8-bit multiplier                                   : 3
+ 4x7-bit multiplier                                    : 1
+ 8x4-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 27
+ 14-bit subtractor                                     : 2
+ 32-bit adder                                          : 7
+ 32-bit subtractor                                     : 6
+ 8-bit adder                                           : 4
+ 8-bit subtractor                                      : 2
+ 9-bit subtractor                                      : 6
+# Counters                                             : 3
+ 3-bit updown counter                                  : 3
+# Registers                                            : 69
+ 1-bit register                                        : 23
+ 14-bit register                                       : 4
+ 2-bit register                                        : 3
+ 3-bit register                                        : 1
+ 32-bit register                                       : 16
+ 4-bit register                                        : 1
+ 8-bit register                                        : 21
+# Comparators                                          : 17
+ 14-bit comparator greatequal                          : 2
+ 14-bit comparator less                                : 2
+ 32-bit comparator greatequal                          : 1
+ 32-bit comparator greater                             : 7
+ 32-bit comparator less                                : 2
+ 8-bit comparator less                                 : 3
+# Multiplexers                                         : 2
+ 32-bit 4-to-1 multiplexer                             : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_6> for best encoding.
+Optimizing FSM <usecuenciador/div_state/FSM> on signal <div_state[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+-------------------
+Analyzing FSM <FSM_5> for best encoding.
+Optimizing FSM <usecuenciador/process_state/FSM> on signal <process_state[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | unreached
+ 11    | 10
+-------------------
+Analyzing FSM <FSM_4> for best encoding.
+Optimizing FSM <umotorx/recState/FSM> on signal <recState[1:5]> with one-hot encoding.
+Optimizing FSM <umotory/recState/FSM> on signal <recState[1:5]> with one-hot encoding.
+Optimizing FSM <umotorz/recState/FSM> on signal <recState[1:5]> with one-hot encoding.
+---------------------
+ State   | Encoding
+---------------------
+ waiting | 00001
+ start   | 00010
+ mueve   | 01000
+ wpaso   | 10000
+ stop    | 00100
+---------------------
+Analyzing FSM <FSM_3> for best encoding.
+Optimizing FSM <uassembler/contador/FSM> on signal <contador[1:4]> with one-hot encoding.
+----------------------------------------------
+ State                            | Encoding
+----------------------------------------------
+ 00000000000000000000000000000000 | 0001
+ 00000000000000000000000000000001 | 0010
+ 00000000000000000000000000000010 | 0100
+ 00000000000000000000000000000011 | 1000
+----------------------------------------------
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <uassembler/estado/FSM> on signal <estado[1:8]> with one-hot encoding.
+---------------------
+ State   | Encoding
+---------------------
+ waiting | 00000001
+ recta   | 00000010
+ calculo | 00010000
+ dx      | 00100000
+ dy      | 01000000
+ dz      | 10000000
+ reset   | 00000100
+ halt    | 00001000
+---------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <uuart/transState/FSM> on signal <transState[1:2]> with gray encoding.
+-------------------------
+ State       | Encoding
+-------------------------
+ waiting     | 00
+ transmiting | 01
+ stopping    | 11
+-------------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <uuart/recState/FSM> on signal <recState[1:2]> with user encoding.
+---------------------
+ State   | Encoding
+---------------------
+ waiting | 00
+ wcenter | 01
+ rec     | 10
+---------------------
+INFO:Xst:2261 - The FF/Latch <i_coordenada_destino_z_0> in Unit <usecuenciador> is equivalent to the following 23 FFs/Latches, which will be removed : <i_coordenada_destino_z_1> <i_coordenada_destino_z_2> <i_coordenada_destino_z_3> <i_coordenada_destino_z_4> <i_coordenada_destino_z_5> <i_coordenada_destino_z_6> <i_coordenada_destino_z_7> <i_coordenada_destino_x_0> <i_coordenada_destino_x_1> <i_coordenada_destino_x_2> <i_coordenada_destino_x_3> <i_coordenada_destino_x_4> <i_coordenada_destino_x_5> <i_coordenada_destino_x_6> <i_coordenada_destino_x_7> <i_coordenada_destino_y_0> <i_coordenada_destino_y_1> <i_coordenada_destino_y_2> <i_coordenada_destino_y_3> <i_coordenada_destino_y_4> <i_coordenada_destino_y_5> <i_coordenada_destino_y_6> <i_coordenada_destino_y_7> 
+WARNING:Xst:1710 - FF/Latch <tx> (without init value) has a constant value of 1 in block <uuart>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_sending_order> has a constant value of 0 in block <usecuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <i_instruccion_1> (without init value) has a constant value of 0 in block <usecuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_coordenada_destino_z_0> has a constant value of 0 in block <usecuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <FFd4> has a constant value of 0 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <dist_y_8> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_9> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_10> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_11> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_12> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_13> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_14> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_15> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_16> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_17> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_18> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_19> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_20> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_21> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_22> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_23> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_24> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_25> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_26> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_27> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_28> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_29> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_30> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_31> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_8> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_9> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_10> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_11> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_12> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_13> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_14> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_15> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_16> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_17> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_18> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_19> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_20> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_21> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_22> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_23> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_24> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_25> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_26> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_27> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_28> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_29> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_30> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_31> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_8> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_9> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_10> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_11> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_12> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_13> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_14> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_15> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_16> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_17> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_18> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_19> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_20> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_21> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_22> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_23> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_24> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_25> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_26> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_27> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_28> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_29> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_30> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_31> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:1293 - FF/Latch <FFd4> has a constant value of 0 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <FFd4> has a constant value of 0 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <dist_x_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_x_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_x_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <FFd3> of sequential type is unconnected in block <FSM>.
+WARNING:Xst:2677 - Node <FFd5> of sequential type is unconnected in block <FSM>.
+WARNING:Xst:2677 - Node <Proc> of sequential type is unconnected in block <umotorx>.
+WARNING:Xst:2677 - Node <Proc> of sequential type is unconnected in block <umotory>.
+WARNING:Xst:2677 - Node <Proc> of sequential type is unconnected in block <umotorz>.
+WARNING:Xst:2677 - Node <dist_y_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_y_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <dist_z_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_y_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_0> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_1> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_2> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_3> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_4> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_5> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_6> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <i_distancia_z_7> of sequential type is unconnected in block <usecuenciador>.
+WARNING:Xst:2677 - Node <FFd3> of sequential type is unconnected in block <FSM>.
+WARNING:Xst:2677 - Node <FFd5> of sequential type is unconnected in block <FSM>.
+WARNING:Xst:2677 - Node <FFd3> of sequential type is unconnected in block <FSM>.
+WARNING:Xst:2677 - Node <FFd5> of sequential type is unconnected in block <FSM>.
+
+Synthesizing (advanced) Unit <Assembler>.
+	Found pipelined multiplier on signal <resultado_entero3_mult0000>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+
+		- 1 pipeline level(s) found in a register on signal <dato>.
+		Pushing register(s) into the multiplier macro.
+Unit <Assembler> synthesized (advanced).
+
+Synthesizing (advanced) Unit <CNC>.
+	Found pipelined multiplier on signal <uassembler/resultado_entero2_mult0000>:
+		- 1 pipeline level(s) found in a register connected to the multiplier macro output.
+		Pushing register(s) into the multiplier macro.
+
+		- 1 pipeline level(s) found in a register on signal <i_brec>.
+		Pushing register(s) into the multiplier macro.
+Unit <CNC> synthesized (advanced).
+WARNING:Xst:2677 - Node <dist_x_8> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_9> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_10> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_11> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_12> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_13> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_14> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_15> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_16> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_17> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_18> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_19> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_20> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_21> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_22> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_23> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_24> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_25> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_26> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_27> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_28> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_29> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_30> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_x_31> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_8> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_9> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_10> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_11> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_12> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_13> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_14> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_15> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_16> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_17> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_18> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_19> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_20> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_21> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_22> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_23> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_24> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_25> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_26> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_27> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_28> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_29> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_30> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_y_31> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_8> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_9> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_10> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_11> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_12> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_13> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_14> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_15> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_16> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_17> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_18> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_19> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_20> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_21> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_22> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_23> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_24> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_25> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_26> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_27> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_28> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_29> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_30> of sequential type is unconnected in block <Secuenciador>.
+WARNING:Xst:2677 - Node <dist_z_31> of sequential type is unconnected in block <Secuenciador>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 8x4-bit ROM                                           : 3
+# Multipliers                                          : 5
+ 32x8-bit multiplier                                   : 3
+ 4x7-bit registered multiplier                         : 1
+ 8x4-bit registered multiplier                         : 1
+# Adders/Subtractors                                   : 25
+ 14-bit subtractor                                     : 2
+ 32-bit adder                                          : 5
+ 32-bit subtractor                                     : 6
+ 8-bit adder                                           : 4
+ 8-bit subtractor                                      : 2
+ 9-bit subtractor                                      : 6
+# Counters                                             : 3
+ 3-bit updown counter                                  : 3
+# Registers                                            : 652
+ Flip-Flops                                            : 652
+# Comparators                                          : 14
+ 14-bit comparator greatequal                          : 2
+ 14-bit comparator less                                : 2
+ 32-bit comparator greater                             : 6
+ 32-bit comparator less                                : 1
+ 8-bit comparator less                                 : 3
+# Multiplexers                                         : 2
+ 32-bit 4-to-1 multiplexer                             : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <uuart/tx> (without init value) has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_sending_order> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <i_instruccion_1> (without init value) has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <order_done> (without init value) has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_coordenada_destino_z_7> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_6> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_5> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_4> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_3> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_2> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_1> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_z_0> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_7> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_6> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_5> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_4> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_3> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_2> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_1> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_x_0> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_7> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_6> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_5> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_4> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_3> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_2> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_1> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i_coordenada_destino_y_0> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <direccion_x> (without init value) has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <direccion_z> (without init value) has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <direccion_y> (without init value) has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <uassembler/Mmult_resultado_entero2_mult0000_0> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/Mmult_resultado_entero3_mult00001_10> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/Mmult_resultado_entero3_mult00001_9> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/Mmult_resultado_entero2_mult00001_8> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <uassembler/Mmult_resultado_entero3_mult00001_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <uassembler/Mmult_resultado_entero3_mult00001_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <uassembler/Mmult_resultado_entero3_mult00001_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <uassembler/Mmult_resultado_entero2_mult00001_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:1293 - FF/Latch <i_reset_engines> has a constant value of 0 in block <Secuenciador>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <uassembler/dato_0> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero3_mult0000_3> 
+INFO:Xst:2261 - The FF/Latch <uassembler/dato_1> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero3_mult0000_2> 
+INFO:Xst:2261 - The FF/Latch <uassembler/dato_2> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero3_mult0000_1> 
+INFO:Xst:2261 - The FF/Latch <uassembler/dato_3> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero3_mult0000_0> 
+INFO:Xst:2261 - The FF/Latch <uuart/brec_0> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero2_mult0000_4> 
+INFO:Xst:2261 - The FF/Latch <uuart/brec_1> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero2_mult0000_3> 
+INFO:Xst:2261 - The FF/Latch <uuart/brec_2> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero2_mult0000_2> 
+INFO:Xst:2261 - The FF/Latch <uuart/brec_3> in Unit <CNC> is equivalent to the following FF/Latch, which will be removed : <uassembler/Mmult_resultado_entero2_mult0000_1> 
+
+Optimizing unit <CNC> ...
+
+Optimizing unit <Motor> ...
+
+Optimizing unit <divisor> ...
+
+Optimizing unit <Secuenciador> ...
+WARNING:Xst:1293 - FF/Latch <umotorz/recState_FSM_FFd5> has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <umotorz/recState_FSM_FFd4> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <umotory/recState_FSM_FFd5> has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <umotory/recState_FSM_FFd4> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <umotorx/recState_FSM_FFd5> has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <umotorx/recState_FSM_FFd4> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <uassembler/Instruccion_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <uassembler/Instruccion_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <umotorz/Proc> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <umotory/Proc> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <umotorx/Proc> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <umotorz/recState_FSM_FFd3> is unconnected in block <CNC>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <umotory/recState_FSM_FFd3> is unconnected in block <CNC>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <umotorx/recState_FSM_FFd3> is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_y_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_x_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/i_distancia_z_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_z_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_y_0> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_7> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_6> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_5> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_4> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_3> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_2> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_1> of sequential type is unconnected in block <CNC>.
+WARNING:Xst:2677 - Node <usecuenciador/dist_x_0> of sequential type is unconnected in block <CNC>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CNC, actual ratio is 72.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 580
+ Flip-Flops                                            : 580
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : CNC.ngr
+Top Level Output File Name         : CNC
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 36
+
+Cell Usage :
+# BELS                             : 2276
+#      GND                         : 1
+#      INV                         : 197
+#      LUT1                        : 164
+#      LUT2                        : 149
+#      LUT2_D                      : 4
+#      LUT2_L                      : 1
+#      LUT3                        : 246
+#      LUT3_D                      : 2
+#      LUT4                        : 508
+#      LUT4_D                      : 7
+#      LUT4_L                      : 3
+#      MULT_AND                    : 4
+#      MUXCY                       : 559
+#      MUXF5                       : 25
+#      VCC                         : 1
+#      XORCY                       : 405
+# FlipFlops/Latches                : 580
+#      FDC                         : 72
+#      FDCE                        : 1
+#      FDE                         : 502
+#      FDP                         : 2
+#      FDR                         : 1
+#      FDRE                        : 1
+#      FDS                         : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 15
+#      IBUF                        : 2
+#      OBUF                        : 13
+# MULTs                            : 2
+#      MULT18X18SIO                : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100evq100-5 
+
+ Number of Slices:                      691  out of    960    71%  
+ Number of Slice Flip Flops:            580  out of   1920    30%  
+ Number of 4 input LUTs:               1281  out of   1920    66%  
+ Number of IOs:                          36
+ Number of bonded IOBs:                  16  out of     66    24%  
+ Number of MULT18X18SIOs:                 2  out of      4    50%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 580   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+------------------------------------------------------+--------------------------------+-------+
+Control Signal                                        | Buffer(FF name)                | Load  |
+------------------------------------------------------+--------------------------------+-------+
+reset                                                 | IBUF                           | 69    |
+uassembler/Madd_i_dato_x_add0000_Madd_cy<0>(XST_GND:G)| NONE(umotorx/recState_FSM_FFd1)| 6     |
+------------------------------------------------------+--------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 13.766ns (Maximum Frequency: 72.644MHz)
+   Minimum input arrival time before clock: 5.764ns
+   Maximum output required time after clock: 5.373ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 13.766ns (frequency: 72.644MHz)
+  Total number of paths / destination ports: 1451496 / 892
+-------------------------------------------------------------------------
+Delay:               13.766ns (Levels of Logic = 48)
+  Source:            uuart/ticks_1 (FF)
+  Destination:       uuart/position_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: uuart/ticks_1 to uuart/position_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.514   0.509  uuart/ticks_1 (uuart/ticks_1)
+     LUT1:I0->O            1   0.612   0.000  uuart/Madd_ticks_add0000_cy<1>_rt (uuart/Madd_ticks_add0000_cy<1>_rt)
+     MUXCY:S->O            1   0.404   0.000  uuart/Madd_ticks_add0000_cy<1> (uuart/Madd_ticks_add0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<2> (uuart/Madd_ticks_add0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<3> (uuart/Madd_ticks_add0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<4> (uuart/Madd_ticks_add0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<5> (uuart/Madd_ticks_add0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<6> (uuart/Madd_ticks_add0000_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<7> (uuart/Madd_ticks_add0000_cy<7>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<8> (uuart/Madd_ticks_add0000_cy<8>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<9> (uuart/Madd_ticks_add0000_cy<9>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<10> (uuart/Madd_ticks_add0000_cy<10>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<11> (uuart/Madd_ticks_add0000_cy<11>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<12> (uuart/Madd_ticks_add0000_cy<12>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<13> (uuart/Madd_ticks_add0000_cy<13>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<14> (uuart/Madd_ticks_add0000_cy<14>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<15> (uuart/Madd_ticks_add0000_cy<15>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<16> (uuart/Madd_ticks_add0000_cy<16>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<17> (uuart/Madd_ticks_add0000_cy<17>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<18> (uuart/Madd_ticks_add0000_cy<18>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<19> (uuart/Madd_ticks_add0000_cy<19>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<20> (uuart/Madd_ticks_add0000_cy<20>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<21> (uuart/Madd_ticks_add0000_cy<21>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<22> (uuart/Madd_ticks_add0000_cy<22>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<23> (uuart/Madd_ticks_add0000_cy<23>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<24> (uuart/Madd_ticks_add0000_cy<24>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<25> (uuart/Madd_ticks_add0000_cy<25>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<26> (uuart/Madd_ticks_add0000_cy<26>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<27> (uuart/Madd_ticks_add0000_cy<27>)
+     MUXCY:CI->O           1   0.052   0.000  uuart/Madd_ticks_add0000_cy<28> (uuart/Madd_ticks_add0000_cy<28>)
+     XORCY:CI->O           3   0.699   0.603  uuart/Madd_ticks_add0000_xor<29> (uuart/ticks_add0000<29>)
+     LUT2:I0->O            1   0.612   0.000  uuart/Mcompar_ticks_cmp_gt0000_lut<12> (uuart/Mcompar_ticks_cmp_gt0000_lut<12>)
+     MUXCY:S->O            1   0.404   0.000  uuart/Mcompar_ticks_cmp_gt0000_cy<12> (uuart/Mcompar_ticks_cmp_gt0000_cy<12>)
+     MUXCY:CI->O          48   0.399   1.107  uuart/Mcompar_ticks_cmp_gt0000_cy<13> (uuart/Mcompar_ticks_cmp_gt0000_cy<13>)
+     LUT3:I2->O            1   0.612   0.000  uuart/recState_cmp_eq00001_wg_lut<0> (uuart/recState_cmp_eq00001_wg_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  uuart/recState_cmp_eq00001_wg_cy<0> (uuart/recState_cmp_eq00001_wg_cy<0>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<1> (uuart/recState_cmp_eq00001_wg_cy<1>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<2> (uuart/recState_cmp_eq00001_wg_cy<2>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<3> (uuart/recState_cmp_eq00001_wg_cy<3>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<4> (uuart/recState_cmp_eq00001_wg_cy<4>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<5> (uuart/recState_cmp_eq00001_wg_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<6> (uuart/recState_cmp_eq00001_wg_cy<6>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<7> (uuart/recState_cmp_eq00001_wg_cy<7>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<8> (uuart/recState_cmp_eq00001_wg_cy<8>)
+     MUXCY:CI->O           1   0.051   0.000  uuart/recState_cmp_eq00001_wg_cy<9> (uuart/recState_cmp_eq00001_wg_cy<9>)
+     MUXCY:CI->O           9   0.399   0.700  uuart/recState_cmp_eq00001_wg_cy<10> (uuart/recState_cmp_eq00001_wg_cy<10>)
+     LUT4_D:I3->O         10   0.612   0.753  uuart/recState_cmp_eq000133 (uuart/recState_cmp_eq0001)
+     LUT4_D:I3->O         31   0.612   1.076  uuart/position_mux0000<0>1 (N0)
+     LUT4:I3->O            1   0.612   0.000  uuart/position_mux0000<8>1 (uuart/position_mux0000<8>)
+     FDC:D                     0.268          uuart/position_8
+    ----------------------------------------
+    Total                     13.766ns (9.018ns logic, 4.748ns route)
+                                       (65.5% logic, 34.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 113 / 112
+-------------------------------------------------------------------------
+Offset:              5.764ns (Levels of Logic = 3)
+  Source:            reset (PAD)
+  Destination:       usecuenciador/i_velocidad_z_7 (FF)
+  Destination Clock: clk rising
+
+  Data Path: reset to usecuenciador/i_velocidad_z_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            75   1.106   1.153  reset_IBUF (reset_IBUF)
+     LUT3:I1->O            6   0.612   0.721  usecuenciador/process_state_FSM_FFd1-In11 (usecuenciador/div_state_not0001)
+     LUT3:I0->O           48   0.612   1.077  usecuenciador/i_coordenada_x_not00011 (usecuenciador/i_coordenada_x_not0001)
+     FDE:CE                    0.483          usecuenciador/i_coordenada_z_0
+    ----------------------------------------
+    Total                      5.764ns (2.813ns logic, 2.951ns route)
+                                       (48.8% logic, 51.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 36 / 12
+-------------------------------------------------------------------------
+Offset:              5.373ns (Levels of Logic = 2)
+  Source:            umotorx/step_1 (FF)
+  Destination:       bobina_x<1> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: umotorx/step_1 to bobina_x<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              6   0.514   0.721  umotorx/step_1 (umotorx/step_1)
+     LUT3:I0->O            1   0.612   0.357  umotorx/Mrom_bobina111 (bobina_x_1_OBUF)
+     OBUF:I->O                 3.169          bobina_x_1_OBUF (bobina_x<1>)
+    ----------------------------------------
+    Total                      5.373ns (4.295ns logic, 1.078ns route)
+                                       (79.9% logic, 20.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 110.00 secs
+Total CPU time to Xst completion: 110.15 secs
+ 
+--> 
+
+Total memory usage is 401020 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  329 (   0 filtered)
+Number of infos    :   18 (   0 filtered)
+

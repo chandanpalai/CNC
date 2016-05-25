@@ -1,0 +1,6 @@
+vhdl work "M:\IS\CNC\divisor.vhd"
+vhdl work "M:\IS\CNC\UART_v.vhd"
+vhdl work "M:\IS\CNC\Secuenciador.vhd"
+vhdl work "M:\IS\CNC\Motor.vhd"
+vhdl work "M:\IS\CNC\Assembler.vhd"
+vhdl work "M:\IS\CNC\CNC.vhd"

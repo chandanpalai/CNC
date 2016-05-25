@@ -1,0 +1,6 @@
+vhdl work "divisor.vhd"
+vhdl work "UART_v.vhd"
+vhdl work "Secuenciador.vhd"
+vhdl work "Motor.vhd"
+vhdl work "Assembler.vhd"
+vhdl work "CNC.vhd"

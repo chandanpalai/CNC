@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Wed May 25 22:45:49 2016
+# Process ID: 9288
+# Log file: M:/IS/CNC/planAhead_run_5/planAhead.log
+# Journal file: M:/IS/CNC/planAhead_run_5/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source M:/IS/CNC/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+startgroup
+set_property package_pin R7 [get_ports rx]
+endgroup
+startgroup
+set_property package_pin M14 [get_ports tx]
+endgroup
+startgroup
+set_property package_pin K17 [get_ports reset]
+endgroup
+startgroup
+set_property package_pin C9 [get_ports clk]
+endgroup
+save_constraints
+set_property package_pin "" [get_ports [list  {bobina_x[3]}]]
+save_constraints

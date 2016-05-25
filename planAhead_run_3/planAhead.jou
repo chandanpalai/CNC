@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Wed May 25 22:34:39 2016
+# Process ID: 3128
+# Log file: M:/IS/CNC/planAhead_run_3/planAhead.log
+# Journal file: M:/IS/CNC/planAhead_run_3/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source M:/IS/CNC/pa.fromHdl.tcl

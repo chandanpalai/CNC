@@ -1,0 +1,10 @@
+[Inputs]
+rx
+clk
+reset
+[Outputs]
+tx
+=bobina_x[3:0]=
+=bobina_y[3:0]=
+=bobina_z[3:0]=
+[BiDir]

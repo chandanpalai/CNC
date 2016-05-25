@@ -80,7 +80,7 @@ begin
 						recState <= waiting;
 				END CASE;
 				ticks := 0;
-			ELSIF rec_pending = '0'
+			ELSIF rec_pending = '0' THEN
 				ticks := ticks + 1;
 			ELSE
 				ticks := 0;   -- Evitar que el contador siga mientra no se lea lo que hay en el vector de salida
@@ -93,7 +93,7 @@ begin
 	
 	process(clk) -- Mensaje de la FPGA al PC
 		variable ticks:integer := 0;
-		variable posicion:integer := 0;
+		variable position:integer := 0;
 	begin
 		IF clk'event AND clk = '0' AND tstart = '1' THEN
 			IF ticks = 5208 THEN
@@ -108,9 +108,9 @@ begin
 							position := position + 1;
 						ELSE
 							tx <= '1';
-							transState <= stopping;
+							transState <= stoping;
 						END IF;
-					WHEN stopping =>
+					WHEN stoping =>
 						tx <= '1';
 						transState <= waiting;
 						tdone <= '1';

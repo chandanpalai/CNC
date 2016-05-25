@@ -1,0 +1,6 @@
+vhdtdtfi -lib work divisor.vhd -prj CNC -o divisor.spl -module divisor -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e divisor.spl K:/IS/CNC/divisor.sym 
+vhdtdtfi -lib work divisor.vhd -prj CNC -o divisor.spl -module divisor -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e divisor.spl K:/IS/CNC/divisor.sym 
+vhdtdtfi -lib work divisor.vhd -prj CNC -o divisor.spl -module divisor -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e divisor.spl E:/IS/CNC/divisor.sym 

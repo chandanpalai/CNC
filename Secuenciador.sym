@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="Secuenciador">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2016-5-25T17:46:14</timestamp>
+    <pin polarity="Input" x="0" y="-608" name="processing_x" />
+    <pin polarity="Input" x="0" y="-528" name="processing_y" />
+    <pin polarity="Input" x="0" y="-448" name="processing_z" />
+    <pin polarity="Input" x="0" y="32" name="clk" />
+    <pin polarity="Input" x="0" y="96" name="rst" />
+    <pin polarity="Input" x="0" y="160" name="order_pending" />
+    <pin polarity="Input" x="0" y="-368" name="instruccion(1:0)" />
+    <pin polarity="Input" x="0" y="-288" name="coordenada_x(7:0)" />
+    <pin polarity="Input" x="0" y="-208" name="coordenada_y(7:0)" />
+    <pin polarity="Input" x="0" y="-128" name="coordenada_z(7:0)" />
+    <pin polarity="Output" x="512" y="-608" name="direccion_x" />
+    <pin polarity="Output" x="512" y="-544" name="direccion_y" />
+    <pin polarity="Output" x="512" y="-480" name="direccion_z" />
+    <pin polarity="Output" x="512" y="-416" name="sending_order" />
+    <pin polarity="Output" x="512" y="32" name="reset_engines" />
+    <pin polarity="Output" x="512" y="96" name="order_done" />
+    <pin polarity="Output" x="512" y="-352" name="distancia_x(7:0)" />
+    <pin polarity="Output" x="512" y="-288" name="velocidad_x(7:0)" />
+    <pin polarity="Output" x="512" y="-224" name="distancia_y(7:0)" />
+    <pin polarity="Output" x="512" y="-160" name="velocidad_y(7:0)" />
+    <pin polarity="Output" x="512" y="-96" name="distancia_z(7:0)" />
+    <pin polarity="Output" x="512" y="-32" name="velocidad_z(7:0)" />
+    <graph>
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="256" y="-648" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-608" type="pin processing_x" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-528" type="pin processing_y" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-448" type="pin processing_z" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin clk" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="96" type="pin rst" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="160" type="pin order_pending" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-368" type="pin instruccion(1:0)" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin coordenada_x(7:0)" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-208" type="pin coordenada_y(7:0)" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-128" type="pin coordenada_z(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-608" type="pin direccion_x" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-544" type="pin direccion_y" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-480" type="pin direccion_z" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-416" type="pin sending_order" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="32" type="pin reset_engines" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="96" type="pin order_done" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-352" type="pin distancia_x(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-288" type="pin velocidad_x(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-224" type="pin distancia_y(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-160" type="pin velocidad_y(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-96" type="pin distancia_z(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="440" y="-32" type="pin velocidad_z(7:0)" />
+        <line x2="0" y1="32" y2="32" x1="64" />
+        <line x2="0" y1="96" y2="96" x1="64" />
+        <line x2="0" y1="160" y2="160" x1="64" />
+        <line x2="512" y1="32" y2="32" x1="448" />
+        <line x2="512" y1="96" y2="96" x1="448" />
+        <line x2="0" y1="-608" y2="-608" x1="64" />
+        <line x2="0" y1="-528" y2="-528" x1="64" />
+        <line x2="0" y1="-448" y2="-448" x1="64" />
+        <rect width="64" x="0" y="-380" height="24" />
+        <line x2="0" y1="-368" y2="-368" x1="64" />
+        <rect width="64" x="0" y="-300" height="24" />
+        <line x2="0" y1="-288" y2="-288" x1="64" />
+        <rect width="64" x="0" y="-220" height="24" />
+        <line x2="0" y1="-208" y2="-208" x1="64" />
+        <rect width="64" x="0" y="-140" height="24" />
+        <line x2="0" y1="-128" y2="-128" x1="64" />
+        <line x2="512" y1="-608" y2="-608" x1="448" />
+        <line x2="512" y1="-544" y2="-544" x1="448" />
+        <line x2="512" y1="-480" y2="-480" x1="448" />
+        <line x2="512" y1="-416" y2="-416" x1="448" />
+        <rect width="64" x="448" y="-364" height="24" />
+        <line x2="512" y1="-352" y2="-352" x1="448" />
+        <rect width="64" x="448" y="-300" height="24" />
+        <line x2="512" y1="-288" y2="-288" x1="448" />
+        <rect width="64" x="448" y="-236" height="24" />
+        <line x2="512" y1="-224" y2="-224" x1="448" />
+        <rect width="64" x="448" y="-172" height="24" />
+        <line x2="512" y1="-160" y2="-160" x1="448" />
+        <rect width="64" x="448" y="-108" height="24" />
+        <line x2="512" y1="-96" y2="-96" x1="448" />
+        <rect width="64" x="448" y="-44" height="24" />
+        <line x2="512" y1="-32" y2="-32" x1="448" />
+        <rect width="384" x="64" y="-640" height="832" />
+    </graph>
+</symbol>

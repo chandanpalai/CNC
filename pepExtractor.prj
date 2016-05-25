@@ -1,1 +1,6 @@
-work	"UART.vhd"
+work	"Assembler.vhd"
+work	"CNC.vhd"
+work	"Motor.vhd"
+work	"Secuenciador.vhd"
+work	"UART_v.vhd"
+work	"divisor.vhd"

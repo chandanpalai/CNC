@@ -54,7 +54,8 @@ type transmision is (espera, transmite1, transmite2);
 
 signal estado: state:= waiting;
 signal transmitir: transmision:= espera;
-signal i_dato_x, i_dato_y, i_dato_z, i_btrans: std_logic_vector (7 downto 0) := (others => '0');
+signal i_dato_x, i_dato_y, i_dato_z: std_logic_vector (7 downto 0) := (others => '0');
+signal i_btrans : std_logic_vector (7 downto 0);
 signal i_rec_done, i_tstart, i_order: std_logic:='0';
 
 constant letra_o: std_logic_vector (7 downto 0) := x"4b";

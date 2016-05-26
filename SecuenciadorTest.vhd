@@ -88,10 +88,11 @@
 		motores_delay: process
 		begin
 			if i_sending_order = '1' then
+				wait for 30 ns;
 				i_processing_x <= '1';
 				i_processing_y <= '1';
 				i_processing_z <= '1';
-				wait for 100 ns;
+			else
 				i_processing_x <= '0';
 				i_processing_y <= '0';
 				i_processing_z <= '0';

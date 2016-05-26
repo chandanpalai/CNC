@@ -104,9 +104,9 @@ architecture Behavioral of CNC is
 			bobina 	: out STD_LOGIC_VECTOR(3 downto 0)
 		);
 	END COMPONENT;
-	signal i_rec_pending, i_tdone, i_rec_done, i_tstart, order_pending, processing_x, processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
+	signal rec_pending, tdone, rec_done, tstart, order_pending, processing_x, processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
 	signal direccion_x, direccion_y, direccion_z : STD_LOGIC := '1';
-	signal i_brec, i_btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, distancia_z, velocidad_x, velocidad_y, velocidad_z : STD_LOGIC_VECTOR (7 downto 0) := (others=>'0');
+	signal brec, btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, distancia_z, velocidad_x, velocidad_y, velocidad_z : STD_LOGIC_VECTOR (7 downto 0) := (others=>'0');
 	signal instruccion : STD_LOGIC_VECTOR (1 downto 0) := "00";
 begin
 
@@ -115,21 +115,21 @@ begin
 		tx => tx,
 		clk => clk,
 		rst => reset,
-		brec => i_brec,
-		rec_pending => i_rec_pending,
-		rec_done => i_rec_done,
-		btrans => i_btrans,
-		tstart => i_tstart,
-		tdone => i_tdone
+		brec => brec,
+		rec_pending => rec_pending,
+		rec_done => rec_done,
+		btrans => btrans,
+		tstart => tstart,
+		tdone => tdone
 	);
 	uassembler : Assembler PORT MAP(
 		clk => clk,
-		Brec => i_brec,
-		rec_pending => i_rec_pending,
-		Btrans =>  i_btrans,
-		Tstart => i_tstart,
-		t_done => i_tdone,
-		rec_done => i_rec_done,
+		Brec => brec,
+		rec_pending => rec_pending,
+		Btrans =>  btrans,
+		Tstart => tstart,
+		t_done => tdone,
+		rec_done => rec_done,
 		Instruccion => instruccion,
 		DatoX => coordenada_x,
 		DatoY => coordenada_y,

@@ -1,0 +1,2 @@
+vhdtdtfi -lib work UART_v.vhd -prj CNC -o UART.spl -module UART -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w UART.spl M:/IS/CNC/UART.sym 

@@ -70,7 +70,7 @@ architecture Behavioral of Secuenciador is
 	type division_states is (none, waiting, done); -- Estado de proceso de la division para la velocidad
 	
 	-- Variables para las dos divisiones
-	signal dividendo1, dividendo2, resto1, resto2 : STD_LOGIC_VECTOR(13 downto 0);
+	signal dividendo1, dividendo2 : STD_LOGIC_VECTOR(13 downto 0);
 	signal resultado1, resultado2, divisor1, divisor2: STD_LOGIC_VECTOR (7 downto 0);
 	
 	-- Componente divisor que se usa para la velocidad
@@ -106,7 +106,6 @@ begin
 		in_signal 	=> in_signal1,
 		clk 			=> clk,
 		resultado 	=> resultado1,
-		resto 		=> resto1,
 		out_signal 	=> out_signal1
 	);
 	
@@ -116,7 +115,6 @@ begin
 		in_signal 	=> in_signal2,
 		clk 			=> clk,
 		resultado 	=> resultado2,
-		resto 		=> resto2,
 		out_signal 	=> out_signal2
 	);
 	
@@ -135,7 +133,7 @@ begin
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
 				order_done <= '0';
-			elsif process_state = waiting_order and order_pending = '1' and processing_x = '1' and processing_y = '1' and processing_z = '1' then -- Se espera una orden y nos lo marcan en el flag
+			elsif process_state = waiting_order and order_pending = '1' and i_sending_order = '0' then -- Se espera una orden y nos lo marcan en el flag
 				i_instruccion <= instruccion; -- Establecemos las variables
 				process_state := process_order;
 				i_coordenada_destino_x <= coordenada_x;

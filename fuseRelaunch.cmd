@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "D:/IS/CNC/test_assembler_isim_beh.exe" -prj "D:/IS/CNC/test_assembler_beh.prj" "work.test_assembler" 
+-intstyle "ise" -incremental -o "M:/IS/CNC/SecuenciadorTest_isim_beh.exe" -prj "M:/IS/CNC/SecuenciadorTest_beh.prj" "work.SecuenciadorTest" 

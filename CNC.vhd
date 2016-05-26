@@ -56,17 +56,18 @@ architecture Behavioral of CNC is
 	
 	COMPONENT Assembler
 		PORT(
-			clk: in STD_LOGIC;
-			Brec : in  STD_LOGIC_VECTOR (7 downto 0);
-			rec_pending : in  STD_LOGIC;
-			Btrans : out   STD_LOGIC_VECTOR(7 downto 0);
-			Tstart : out  STD_LOGIC;
-			t_done : in  STD_LOGIC;
-			rec_done : out  STD_LOGIC;
-			Instruccion : out  STD_LOGIC_VECTOR (1 downto 0);
-			DatoX : out  STD_LOGIC_VECTOR (7 downto 0);
-			DatoY : out  STD_LOGIC_VECTOR (7 downto 0);
-			DatoZ : out  STD_LOGIC_VECTOR (7 downto 0)
+			clk, reset: in std_logic;
+			  brec : in  std_logic_vector (7 downto 0);
+           rec_pending : in  std_logic;
+           btrans : out   std_logic_vector(7 downto 0);
+           tstart : out  std_logic;
+           t_done, order_done : in  std_logic;
+			  rec_done : out  std_logic;
+           instruccion : out  std_logic_vector (1 downto 0);
+           datox : out  std_logic_vector (7 downto 0);
+           datoy : out  std_logic_vector (7 downto 0);
+           datoz : out  std_logic_vector (7 downto 0);
+			  order_pending: out std_logic
 		);
 	END COMPONENT;
 	COMPONENT Secuenciador
@@ -132,7 +133,10 @@ begin
 		Instruccion => instruccion,
 		DatoX => coordenada_x,
 		DatoY => coordenada_y,
-		DatoZ => coordenada_z
+		DatoZ => coordenada_z,
+		reset => reset,
+		order_done => order_done,
+		order_pending => order_pending
 	);
 	
 	usecuenciador : Secuenciador PORT MAP(

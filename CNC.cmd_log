@@ -1,9 +1,16 @@
 vhdtdtfi -lib work divisor.vhd -lib work UART_v.vhd -lib work Secuenciador.vhd -lib work Motor.vhd -lib work Assembler.vhd -lib work CNC.vhd -prj CNC -o CNC.spl -module CNC -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan3e -w CNC.spl M:/IS/CNC/CNC.sym 
-xst -intstyle ise -ifn "M:/IS/CNC/CNC.xst" -ofn "M:/IS/CNC/CNC.syr" 
+spl2sym -intstyle ise -family spartan3e -w CNC.spl D:/IS/CNC/CNC.sym 
+xst -intstyle ise -ifn "D:/IS/CNC/CNC.xst" -ofn "D:/IS/CNC/CNC.syr" 
 vhdtdtfi -lib work divisor.vhd -lib work UART_v.vhd -lib work Secuenciador.vhd -lib work Motor.vhd -lib work Assembler.vhd -lib work CNC.vhd -prj CNC -o CNC.spl -module CNC -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan3e -w CNC.spl M:/IS/CNC/CNC.sym 
-xst -intstyle ise -ifn "M:/IS/CNC/CNC.xst" -ofn "M:/IS/CNC/CNC.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s100e-vq100-5 CNC.ngc CNC.ngd  
+spl2sym -intstyle ise -family spartan3e -w CNC.spl D:/IS/CNC/CNC.sym 
+xst -intstyle ise -ifn "D:/IS/CNC/CNC.xst" -ofn "D:/IS/CNC/CNC.syr" 
 vhdtdtfi -lib work divisor.vhd -lib work UART_v.vhd -lib work Secuenciador.vhd -lib work Motor.vhd -lib work Assembler.vhd -lib work CNC.vhd -prj CNC -o CNC.spl -module CNC -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan3e -w CNC.spl M:/IS/CNC/CNC.sym 
+spl2sym -intstyle ise -family spartan3e -w CNC.spl D:/IS/CNC/CNC.sym 
+xst -intstyle ise -ifn "D:/IS/CNC/CNC.xst" -ofn "D:/IS/CNC/CNC.syr" 
+xst -intstyle ise -ifn "D:/IS/CNC/CNC.xst" -ofn "D:/IS/CNC/CNC.syr" 
+xst -intstyle ise -ifn "D:/IS/CNC/CNC.xst" -ofn "D:/IS/CNC/CNC.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc CNC.ucf -p xc3s500e-fg320-4 CNC.ngc CNC.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o CNC_map.ncd CNC.ngd CNC.pcf 
+par -w -intstyle ise -ol high -t 1 CNC_map.ncd CNC.ncd CNC.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml CNC.twx CNC.ncd -o CNC.twr CNC.pcf -ucf CNC.ucf 
+bitgen -intstyle ise -f CNC.ut CNC.ncd 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="Secuenciador">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2016-5-25T17:46:14</timestamp>
+    <timestamp>2016-5-26T18:11:56</timestamp>
     <pin polarity="Input" x="0" y="-608" name="processing_x" />
     <pin polarity="Input" x="0" y="-528" name="processing_y" />
     <pin polarity="Input" x="0" y="-448" name="processing_z" />

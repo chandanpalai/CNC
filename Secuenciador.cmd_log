@@ -1,0 +1,8 @@
+vhdtdtfi -lib work divisor.vhd -lib work Secuenciador.vhd -prj CNC -o Secuenciador.spl -module Secuenciador -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w Secuenciador.spl D:/IS/CNC/Secuenciador.sym 
+vhdtdtfi -lib work divisor.vhd -lib work Secuenciador.vhd -prj CNC -o Secuenciador.spl -module Secuenciador -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w Secuenciador.spl D:/IS/CNC/Secuenciador.sym 
+vhdtdtfi -lib work divisor.vhd -lib work Secuenciador.vhd -prj CNC -o Secuenciador.spl -module Secuenciador -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w Secuenciador.spl D:/IS/CNC/Secuenciador.sym 
+vhdtdtfi -lib work divisor.vhd -lib work Secuenciador.vhd -prj CNC -o Secuenciador.spl -module Secuenciador -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w Secuenciador.spl D:/IS/CNC/Secuenciador.sym 

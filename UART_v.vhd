@@ -130,7 +130,7 @@ begin
 			tx <= '1';
 			position := 0;
 			ticks := 0;
-			tdone_i <= '1';
+			tdone_i <= '0';
 		ELSIF rising_edge(CLK) THEN
 			IF tstart = '0' THEN -- Hasta que no se habilita el flag de comienzo no se empieza a comunicar
 				transState <= WAITING;

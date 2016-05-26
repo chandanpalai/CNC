@@ -1,0 +1,5 @@
+set -tmpdir "D:/IS/CNC/xst/projnav.tmp"
+set -xsthdpdir "D:/IS/CNC/xst"
+elaborate
+-ifn Secuenciador.prj
+-ifmt mixed

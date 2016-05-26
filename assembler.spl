@@ -1,0 +1,17 @@
+[Inputs]
+clk
+reset
+rec_pending
+t_done
+order_done
+=brec[7:0]=
+[Outputs]
+tstart
+rec_done
+order_pending
+=btrans[7:0]=
+=instruccion[1:0]=
+=datox[7:0]=
+=datoy[7:0]=
+=datoz[7:0]=
+[BiDir]

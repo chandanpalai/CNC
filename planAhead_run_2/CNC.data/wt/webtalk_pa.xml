@@ -3,9 +3,9 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Wed May 25 22:44:42 2016">
+<application name="pa" timeStamp="Thu May 26 20:39:09 2016">
 <section name="Project Information" visible="false">
-<property name="ProjectID" value="2b156363a308433ba7b98e66d85cac2d" type="ProjectID"/>
+<property name="ProjectID" value="70c06b9e07fc4cf48bceb51862709886" type="ProjectID"/>
 <property name="ProjectIteration" value="1" type="ProjectIteration"/>
 </section>
 <section name="PlanAhead Usage" visible="true">
@@ -15,10 +15,6 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="DesignMode" value="RTL" type="DesignMode"/>
 <property name="SynthesisStrategy" value="PlanAhead Defaults" type="SynthesisStrategy"/>
 <property name="ImplStrategy" value="ISE Defaults" type="ImplStrategy"/>
-</item>
-<item name="Java Command Handlers">
-<property name="ImportPorts" value="1" type="JavaHandler"/>
-<property name="RunSchematic" value="1" type="JavaHandler"/>
 </item>
 <item name="Other">
 <property name="GuiMode" value="0" type="GuiMode"/>

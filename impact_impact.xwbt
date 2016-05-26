@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=D:\IS\CNC\impact.xsl
+OUTFILE=D:\IS\CNC\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=D:\IS\CNC
+LICENSE=iMPACT
+USER_INFO=iMPACT

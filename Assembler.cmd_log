@@ -4,3 +4,19 @@ vhdtdtfi -lib work Assembler.vhd -prj CNC -o Assembler.spl -module Assembler -te
 spl2sym -intstyle ise -family spartan3e -w Assembler.spl D:/IS/CNC/Assembler.sym 
 vhdtdtfi -lib work Assembler.vhd -prj CNC -o Assembler.spl -module Assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
 spl2sym -intstyle ise -family spartan3e -w Assembler.spl D:/IS/CNC/Assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 

@@ -1,7 +1,23 @@
 
-# PlanAhead Generated physical constraints 
 
 NET "rx" LOC = R7;
 NET "tx" LOC = M14;
 NET "reset" LOC = K17;
 NET "clk" LOC = C9;
+
+
+NET "bobina_y[0]" LOC = C5;
+NET "bobina_z[0]" LOC = J2;
+
+# PlanAhead Generated physical constraints 
+
+NET "bobina_x[3]" LOC = D7;
+NET "bobina_x[2]" LOC = C7;
+NET "bobina_x[1]" LOC = F8;
+NET "bobina_x[0]" LOC = E8;
+NET "bobina_y[3]" LOC = B4;
+NET "bobina_y[2]" LOC = A4;
+NET "bobina_y[1]" LOC = D5;
+NET "bobina_z[3]" LOC = A6;
+NET "bobina_z[2]" LOC = B6;
+NET "bobina_z[1]" LOC = E7;

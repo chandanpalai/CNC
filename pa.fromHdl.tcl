@@ -1,7 +1,7 @@
 
 # PlanAhead Launch Script for Pre-Synthesis Floorplanning, created by Project Navigator
 
-create_project -name CNC -dir "M:/IS/CNC/planAhead_run_5" -part xc3s500efg320-4
+create_project -name CNC -dir "D:/IS/CNC/planAhead_run_3" -part xc3s500efg320-4
 set_param project.pinAheadLayout yes
 set srcset [get_property srcset [current_run -impl]]
 set_property target_constrs_file "CNC.ucf" [current_fileset -constrset]

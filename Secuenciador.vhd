@@ -135,13 +135,12 @@ begin
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
 				order_done <= '0';
-			elsif process_state = waiting_order and order_pending = '1' then -- Se espera una orden y nos lo marcan en el flag
+			elsif process_state = waiting_order and order_pending = '1' and processing_x = '1' and processing_y = '1' and processing_z = '1' then -- Se espera una orden y nos lo marcan en el flag
 				i_instruccion <= instruccion; -- Establecemos las variables
 				process_state := process_order;
 				i_coordenada_destino_x <= coordenada_x;
 				i_coordenada_destino_y <= coordenada_y;
 				i_coordenada_destino_z <= coordenada_z;
-				order_done <= '0'; -- Quitamos el flag de completado
 			elsif process_state = process_order or process_state = process_reset then
 				case i_instruccion is
 					when "00" => -- R (reset)
@@ -272,17 +271,22 @@ begin
 					when others =>
 						process_state := waiting_order;
 				end case;
-			elsif process_state = order_finished and processing_x = '0' and processing_y = '0' and processing_z = '0' and order_pending = '1' then
-				-- Si se ha finalizado la orden y los motores han acabado su trabajo, enviamos la siguiente instruccion a los motores
-				i_sending_order <= '1';
-				-- Decimos que ya hemos terminado para que nos manden otra orden
-				order_done <= '1';
-				i_reset_engines <= '0';
-				process_state := waiting_order;
+			elsif process_state = order_finished then
+				if i_sending_order= '0' then
+					-- Si se ha finalizado la orden y los motores han acabado su trabajo, enviamos la siguiente instruccion a los motores
+					i_sending_order <= '1';
+					-- Decimos que ya hemos terminado para que nos manden otra orden
+					order_done <= '1';
+					i_reset_engines <= '0';
+				end if;
 			end if;
-			if processing_x = '0' and processing_y = '0' and processing_z = '0' and i_sending_order = '1' then
+			if processing_x = '1' and processing_y = '1' and processing_z = '1' and i_sending_order = '1' then
 				-- si se ha acabado la instruccion decimos a los motores que hemos acabado
 				i_sending_order <= '0';
+			end if;
+			if order_pending = '0' then
+				order_done <= '0';
+				process_state := waiting_order;
 			end if;
 		end if;
 	end process;

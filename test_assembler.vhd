@@ -41,18 +41,18 @@ ARCHITECTURE behavior OF test_assembler IS
  
     COMPONENT Assembler
     PORT(
-         clk : IN  std_logic;
-         Brec : IN  std_logic_vector(7 downto 0);
-         rec_pending : IN  std_logic;
-         Btrans : OUT  std_logic_vector(7 downto 0);
-         Tstart : OUT  std_logic;
-         t_done : IN  std_logic;
-         rec_done : OUT  std_logic;
-         Instruccion : OUT  std_logic_vector(1 downto 0);
-         DatoX : OUT  std_logic_vector(9 downto 0);
-         DatoY : OUT  std_logic_vector(9 downto 0);
-         DatoZ : OUT  std_logic_vector(9 downto 0)
---         DatoRadio : OUT  std_logic_vector(7 downto 0)
+         clk, reset: in std_logic;
+			  brec : in  std_logic_vector (7 downto 0);
+           rec_pending : in  std_logic;
+           btrans : out   std_logic_vector(7 downto 0);
+           tstart : out  std_logic;
+           t_done, order_done : in  std_logic;
+			  rec_done : out  std_logic;
+           instruccion : out  std_logic_vector (1 downto 0);
+           datox : out  std_logic_vector (7 downto 0);
+           datoy : out  std_logic_vector (7 downto 0);
+           datoz : out  std_logic_vector (7 downto 0);
+			  order_pending: out std_logic
         );
     END COMPONENT;
     
@@ -62,15 +62,18 @@ ARCHITECTURE behavior OF test_assembler IS
    signal Brec : std_logic_vector(7 downto 0) := (others => '0');
    signal rec_pending : std_logic := '0';
    signal t_done : std_logic := '0';
+	signal reset : std_logic := '0';
+	signal order_pending : std_logic := '0';
 
  	--Outputs
    signal Btrans : std_logic_vector(7 downto 0);
    signal Tstart : std_logic;
    signal rec_done : std_logic;
    signal Instruccion : std_logic_vector(1 downto 0);
-   signal DatoX : std_logic_vector(9 downto 0);
-   signal DatoY : std_logic_vector(9 downto 0);
-   signal DatoZ : std_logic_vector(9 downto 0);
+   signal DatoX : std_logic_vector(7 downto 0);
+   signal DatoY : std_logic_vector(7 downto 0);
+   signal DatoZ : std_logic_vector(7 downto 0);
+	signal order_done : std_logic;
 --   signal DatoRadio : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
@@ -90,7 +93,10 @@ BEGIN
           Instruccion => Instruccion,
           DatoX => DatoX,
           DatoY => DatoY,
-          DatoZ => DatoZ
+          DatoZ => DatoZ,
+			 order_pending => order_pending,
+			 reset => reset,
+			 order_done => order_done
 --          DatoRadio => DatoRadio
         );
 
@@ -111,10 +117,11 @@ BEGIN
       wait for 10 ns;
 		rec_pending<='0';
 		brec<="01010011"; --instruc
-		wait for 30 ns;
+		wait for 10 ns;
 		rec_pending<='1';
 		wait for 10 ns;
 		rec_pending<='0';
+		wait for 10 ns;
 		brec<="00110000";
 		wait for 30 ns;
 		brec<="00110000"; --x
@@ -122,11 +129,13 @@ BEGIN
 		brec<="00110000";
 		wait for 30 ns;
 		rec_pending<='1';
---		wait for 20 ns;
---		
---		rec_pending<='1';
 		wait for 10 ns;
-
+		
+				
+		wait for 50 ns;
+		order_done <= '1';
+		
+		
 		brec<="00000000";
 		wait for 30 ns;
 		rec_pending<='0';
@@ -153,6 +162,7 @@ BEGIN
       wait for clk_period*10;
 
       -- insert stimulus here 
+		assert false report "Fin test" severity failure;
 
       wait;
    end process;

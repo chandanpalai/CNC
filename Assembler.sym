@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<symbol version="7" name="Assembler">
+<symbol version="7" name="assembler">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2016-5-25T17:59:42</timestamp>
+    <timestamp>2016-5-26T18:12:52</timestamp>
     <pin polarity="Input" x="0" y="-416" name="clk" />
+    <pin polarity="Input" x="0" y="32" name="reset" />
     <pin polarity="Input" x="0" y="-288" name="rec_pending" />
     <pin polarity="Input" x="0" y="-160" name="t_done" />
-    <pin polarity="Input" x="0" y="-32" name="Brec(7:0)" />
-    <pin polarity="Output" x="432" y="-416" name="Tstart" />
+    <pin polarity="Input" x="0" y="96" name="order_done" />
+    <pin polarity="Input" x="0" y="-32" name="brec(7:0)" />
+    <pin polarity="Output" x="432" y="-416" name="tstart" />
     <pin polarity="Output" x="432" y="-352" name="rec_done" />
-    <pin polarity="Output" x="432" y="-288" name="Btrans(7:0)" />
-    <pin polarity="Output" x="432" y="-224" name="Instruccion(1:0)" />
-    <pin polarity="Output" x="432" y="-160" name="DatoX(7:0)" />
-    <pin polarity="Output" x="432" y="-96" name="DatoY(7:0)" />
-    <pin polarity="Output" x="432" y="-32" name="DatoZ(7:0)" />
+    <pin polarity="Output" x="432" y="32" name="order_pending" />
+    <pin polarity="Output" x="432" y="-288" name="btrans(7:0)" />
+    <pin polarity="Output" x="432" y="-224" name="instruccion(1:0)" />
+    <pin polarity="Output" x="432" y="-160" name="datox(7:0)" />
+    <pin polarity="Output" x="432" y="-96" name="datoy(7:0)" />
+    <pin polarity="Output" x="432" y="-32" name="datoz(7:0)" />
     <graph>
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="216" y="-456" type="symbol" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin clk" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin reset" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin rec_pending" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin t_done" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin Brec(7:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-416" type="pin Tstart" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="96" type="pin order_done" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin brec(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-416" type="pin tstart" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-352" type="pin rec_done" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-288" type="pin Btrans(7:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-224" type="pin Instruccion(1:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-160" type="pin DatoX(7:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-96" type="pin DatoY(7:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-32" type="pin DatoZ(7:0)" />
-        <rect width="304" x="64" y="-448" height="448" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="32" type="pin order_pending" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-288" type="pin btrans(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-224" type="pin instruccion(1:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-160" type="pin datox(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-96" type="pin datoy(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="360" y="-32" type="pin datoz(7:0)" />
+        <line x2="0" y1="32" y2="32" x1="64" />
+        <line x2="0" y1="96" y2="96" x1="64" />
+        <line x2="432" y1="32" y2="32" x1="368" />
         <line x2="0" y1="-416" y2="-416" x1="64" />
         <line x2="0" y1="-288" y2="-288" x1="64" />
         <line x2="0" y1="-160" y2="-160" x1="64" />
@@ -44,5 +52,6 @@
         <line x2="432" y1="-96" y2="-96" x1="368" />
         <rect width="64" x="368" y="-44" height="24" />
         <line x2="432" y1="-32" y2="-32" x1="368" />
+        <rect width="304" x="64" y="-448" height="576" />
     </graph>
 </symbol>

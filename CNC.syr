@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.57 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.53 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.57 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.53 secs
  
 --> Reading design: CNC.prj
 
@@ -104,61 +104,69 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "M:/IS/CNC/divisor.vhd" in Library work.
-Architecture behavioral of Entity divisor is up to date.
-Compiling vhdl file "M:/IS/CNC/UART_v.vhd" in Library work.
-Architecture behavioral of Entity uart is up to date.
-Compiling vhdl file "M:/IS/CNC/Assembler.vhd" in Library work.
+Compiling vhdl file "C:/CNC/divisor.vhd" in Library work.
+Entity <divisor> compiled.
+Entity <divisor> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/CNC/UART_v.vhd" in Library work.
+Entity <UART> compiled.
+Entity <UART> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/CNC/Assembler.vhd" in Library work.
 Entity <assembler> compiled.
 Entity <assembler> (Architecture <behavioral>) compiled.
-Compiling vhdl file "M:/IS/CNC/Secuenciador.vhd" in Library work.
-Architecture behavioral of Entity secuenciador is up to date.
-Compiling vhdl file "M:/IS/CNC/Motor.vhd" in Library work.
-Architecture behavioral of Entity motor is up to date.
-Compiling vhdl file "M:/IS/CNC/CNC.vhd" in Library work.
-Architecture behavioral of Entity cnc is up to date.
+Compiling vhdl file "C:/CNC/Secuenciador.vhd" in Library work.
+Entity <Secuenciador> compiled.
+Entity <Secuenciador> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/CNC/Motor.vhd" in Library work.
+Entity <Motor> compiled.
+Entity <Motor> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/CNC/CNC.vhd" in Library work.
+Entity <CNC> compiled.
+Entity <CNC> (Architecture <Behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <CNC> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <CNC> in library <work> (architecture <Behavioral>).
 
-Analyzing hierarchy for entity <UART> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <UART> in library <work> (architecture <Behavioral>).
 
 Analyzing hierarchy for entity <Assembler> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <Secuenciador> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <Secuenciador> in library <work> (architecture <Behavioral>).
 
-Analyzing hierarchy for entity <Motor> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <Motor> in library <work> (architecture <Behavioral>).
 
-Analyzing hierarchy for entity <divisor> in library <work> (architecture <behavioral>).
+Analyzing hierarchy for entity <divisor> in library <work> (architecture <Behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <CNC> in library <work> (Architecture <behavioral>).
+Analyzing Entity <CNC> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:753 - "C:/CNC/CNC.vhd" line 166: Unconnected output port 'coordenada_x_act' of component 'Secuenciador'.
+WARNING:Xst:753 - "C:/CNC/CNC.vhd" line 166: Unconnected output port 'coordenada_y_act' of component 'Secuenciador'.
+WARNING:Xst:753 - "C:/CNC/CNC.vhd" line 166: Unconnected output port 'coordenada_z_act' of component 'Secuenciador'.
 Entity <CNC> analyzed. Unit <CNC> generated.
 
-Analyzing Entity <UART> in library <work> (Architecture <behavioral>).
+Analyzing Entity <UART> in library <work> (Architecture <Behavioral>).
 Entity <UART> analyzed. Unit <UART> generated.
 
 Analyzing Entity <Assembler> in library <work> (Architecture <behavioral>).
 Entity <Assembler> analyzed. Unit <Assembler> generated.
 
-Analyzing Entity <Secuenciador> in library <work> (Architecture <behavioral>).
-WARNING:Xst:753 - "M:/IS/CNC/Secuenciador.vhd" line 103: Unconnected output port 'resto' of component 'divisor'.
-WARNING:Xst:753 - "M:/IS/CNC/Secuenciador.vhd" line 112: Unconnected output port 'resto' of component 'divisor'.
+Analyzing Entity <Secuenciador> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:753 - "C:/CNC/Secuenciador.vhd" line 110: Unconnected output port 'resto' of component 'divisor'.
+WARNING:Xst:753 - "C:/CNC/Secuenciador.vhd" line 119: Unconnected output port 'resto' of component 'divisor'.
 INFO:Xst:2679 - Register <vel_z> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <vel_y> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <vel_x> in unit <Secuenciador> has a constant value of 1100100 during circuit operation. The register is replaced by logic.
 Entity <Secuenciador> analyzed. Unit <Secuenciador> generated.
 
-Analyzing Entity <divisor> in library <work> (Architecture <behavioral>).
+Analyzing Entity <divisor> in library <work> (Architecture <Behavioral>).
 Entity <divisor> analyzed. Unit <divisor> generated.
 
-Analyzing Entity <Motor> in library <work> (Architecture <behavioral>).
-INFO:Xst:1561 - "M:/IS/CNC/Motor.vhd" line 64: Mux is complete : default of case is discarded
+Analyzing Entity <Motor> in library <work> (Architecture <Behavioral>).
+INFO:Xst:1561 - "C:/CNC/Motor.vhd" line 64: Mux is complete : default of case is discarded
 Entity <Motor> analyzed. Unit <Motor> generated.
 
 
@@ -169,7 +177,7 @@ Entity <Motor> analyzed. Unit <Motor> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <UART>.
-    Related source file is "M:/IS/CNC/UART_v.vhd".
+    Related source file is "C:/CNC/UART_v.vhd".
     Found finite state machine <FSM_0> for signal <recState>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
@@ -227,11 +235,12 @@ Unit <UART> synthesized.
 
 
 Synthesizing Unit <Assembler>.
-    Related source file is "M:/IS/CNC/Assembler.vhd".
+    Related source file is "C:/CNC/Assembler.vhd".
+WARNING:Xst:1305 - Output <traza<6:4>> is never assigned. Tied to value 000.
     Found finite state machine <FSM_2> for signal <transmitir>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
-    | Transitions        | 8                                              |
+    | Transitions        | 11                                             |
     | Inputs             | 4                                              |
     | Outputs            | 3                                              |
     | Clock              | clk                       (rising_edge)        |
@@ -242,11 +251,11 @@ Synthesizing Unit <Assembler>.
     Found finite state machine <FSM_3> for signal <estado>.
     -----------------------------------------------------------------------
     | States             | 10                                             |
-    | Transitions        | 23                                             |
-    | Inputs             | 13                                             |
-    | Outputs            | 13                                             |
+    | Transitions        | 22                                             |
+    | Inputs             | 12                                             |
+    | Outputs            | 14                                             |
     | Clock              | clk                       (rising_edge)        |
-    | Clock enable       | rec_pending               (positive)           |
+    | Clock enable       | estado$not0000            (positive)           |
     | Reset              | reset                     (positive)           |
     | Reset type         | asynchronous                                   |
     | Reset State        | waiting                                        |
@@ -256,47 +265,46 @@ Synthesizing Unit <Assembler>.
     -----------------------------------------------------------------------
     Found finite state machine <FSM_4> for signal <contador>.
     -----------------------------------------------------------------------
-    | States             | 4                                              |
-    | Transitions        | 7                                              |
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
     | Inputs             | 3                                              |
-    | Outputs            | 4                                              |
+    | Outputs            | 3                                              |
     | Clock              | clk                       (rising_edge)        |
     | Clock enable       | contador$and0000          (positive)           |
     | Power Up State     | 00                                             |
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-WARNING:Xst:643 - "M:/IS/CNC/Assembler.vhd" line 121: The result of a 8x4-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
-WARNING:Xst:643 - "M:/IS/CNC/Assembler.vhd" line 116: The result of a 4x7-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
-    Found 2-bit register for signal <instruccion>.
+WARNING:Xst:643 - "C:/CNC/Assembler.vhd" line 126: The result of a 8x4-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "C:/CNC/Assembler.vhd" line 120: The result of a 4x7-bit multiplication is partially used. Only the 8 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 4-bit register for signal <dato>.
     Found 8-bit register for signal <i_btrans>.
     Found 8-bit register for signal <i_dato_x>.
-    Found 8-bit adder for signal <i_dato_x$add0000> created at line 149.
-    Found 8-bit adder for signal <i_dato_x$addsub0000> created at line 148.
+    Found 8-bit adder for signal <i_dato_x$add0000> created at line 148.
+    Found 8-bit adder for signal <i_dato_x$addsub0000> created at line 147.
     Found 8-bit register for signal <i_dato_y>.
-    Found 8-bit adder for signal <i_dato_y$add0000> created at line 156.
-    Found 8-bit adder for signal <i_dato_y$addsub0000> created at line 155.
     Found 8-bit register for signal <i_dato_z>.
-    Found 1-bit register for signal <i_order>.
+    Found 2-bit register for signal <i_instruccion>.
+    Found 1-bit register for signal <i_order_pending>.
     Found 1-bit register for signal <i_rec_done>.
     Found 1-bit register for signal <i_tstart>.
     Found 2-bit register for signal <num_datos>.
     Found 2-bit adder for signal <num_datos$addsub0000>.
+    Found 4-bit register for signal <resultado_entero1>.
     Found 8-bit register for signal <resultado_entero2>.
-    Found 8x4-bit multiplier for signal <resultado_entero2$mult0000> created at line 121.
+    Found 8x4-bit multiplier for signal <resultado_entero2$mult0000> created at line 126.
     Found 8-bit register for signal <resultado_entero3>.
-    Found 4x7-bit multiplier for signal <resultado_entero3$mult0000> created at line 116.
+    Found 4x7-bit multiplier for signal <resultado_entero3$mult0000> created at line 120.
     Summary:
 	inferred   3 Finite State Machine(s).
-	inferred  59 D-type flip-flop(s).
-	inferred   5 Adder/Subtractor(s).
+	inferred  63 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
 	inferred   2 Multiplier(s).
 Unit <Assembler> synthesized.
 
 
 Synthesizing Unit <Motor>.
-    Related source file is "M:/IS/CNC/Motor.vhd".
+    Related source file is "C:/CNC/Motor.vhd".
     Found finite state machine <FSM_5> for signal <recState>.
     -----------------------------------------------------------------------
     | States             | 5                                              |
@@ -330,7 +338,7 @@ Unit <Motor> synthesized.
 
 
 Synthesizing Unit <divisor>.
-    Related source file is "M:/IS/CNC/divisor.vhd".
+    Related source file is "C:/CNC/divisor.vhd".
     Found 32-bit register for signal <contador>.
     Found 32-bit adder for signal <contador$addsub0000> created at line 59.
     Found 14-bit comparator less for signal <contador$cmp_lt0000> created at line 53.
@@ -350,7 +358,7 @@ Unit <divisor> synthesized.
 
 
 Synthesizing Unit <Secuenciador>.
-    Related source file is "M:/IS/CNC/Secuenciador.vhd".
+    Related source file is "C:/CNC/Secuenciador.vhd".
 WARNING:Xst:646 - Signal <dist_z<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dist_y<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dist_x<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -387,30 +395,30 @@ INFO:Xst:1799 - State 10 is never reached in FSM <process_state>.
     Using one-hot encoding for signal <max$mux0000>.
     Using one-hot encoding for signal <max$mux0001>.
     Using one-hot encoding for signal <max>.
-WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 205: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
-WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 203: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
-WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 209: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "C:/CNC/Secuenciador.vhd" line 214: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "C:/CNC/Secuenciador.vhd" line 212: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+WARNING:Xst:643 - "C:/CNC/Secuenciador.vhd" line 218: The result of a 32x8-bit multiplication is partially used. Only the 14 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
     Found 1-bit register for signal <direccion_x>.
     Found 1-bit register for signal <direccion_y>.
     Found 1-bit register for signal <direccion_z>.
     Found 1-bit register for signal <order_done>.
     Found 32-bit register for signal <dist_x>.
-    Found 8-bit comparator less for signal <dist_x$cmp_lt0000> created at line 164.
-    Found 9-bit subtractor for signal <dist_x$sub0000> created at line 165.
-    Found 9-bit subtractor for signal <dist_x$sub0001> created at line 168.
+    Found 8-bit comparator less for signal <dist_x$cmp_lt0000> created at line 173.
+    Found 9-bit subtractor for signal <dist_x$sub0000> created at line 174.
+    Found 9-bit subtractor for signal <dist_x$sub0001> created at line 177.
     Found 32-bit register for signal <dist_y>.
-    Found 8-bit comparator less for signal <dist_y$cmp_lt0000> created at line 172.
-    Found 9-bit subtractor for signal <dist_y$sub0000> created at line 173.
-    Found 9-bit subtractor for signal <dist_y$sub0001> created at line 176.
+    Found 8-bit comparator less for signal <dist_y$cmp_lt0000> created at line 181.
+    Found 9-bit subtractor for signal <dist_y$sub0000> created at line 182.
+    Found 9-bit subtractor for signal <dist_y$sub0001> created at line 185.
     Found 32-bit register for signal <dist_z>.
-    Found 8-bit comparator less for signal <dist_z$cmp_lt0000> created at line 186.
-    Found 9-bit subtractor for signal <dist_z$sub0000> created at line 187.
-    Found 9-bit subtractor for signal <dist_z$sub0001> created at line 190.
+    Found 8-bit comparator less for signal <dist_z$cmp_lt0000> created at line 195.
+    Found 9-bit subtractor for signal <dist_z$sub0000> created at line 196.
+    Found 9-bit subtractor for signal <dist_z$sub0001> created at line 199.
     Found 14-bit register for signal <dividendo1>.
-    Found 32x8-bit multiplier for signal <dividendo1$mult0002> created at line 203.
-    Found 32x8-bit multiplier for signal <dividendo1$mult0003> created at line 209.
+    Found 32x8-bit multiplier for signal <dividendo1$mult0002> created at line 212.
+    Found 32x8-bit multiplier for signal <dividendo1$mult0003> created at line 218.
     Found 14-bit register for signal <dividendo2>.
-    Found 32x8-bit multiplier for signal <dividendo2$mult0001> created at line 205.
+    Found 32x8-bit multiplier for signal <dividendo2$mult0001> created at line 214.
     Found 8-bit register for signal <divisor1>.
     Found 8-bit register for signal <i_coordenada_destino_x>.
     Found 8-bit register for signal <i_coordenada_destino_y>.
@@ -429,8 +437,8 @@ WARNING:Xst:643 - "M:/IS/CNC/Secuenciador.vhd" line 209: The result of a 32x8-bi
     Found 8-bit register for signal <i_velocidad_z>.
     Found 1-bit register for signal <in_signal1>.
     Found 3-bit register for signal <max>.
-    Found 32-bit comparator greater for signal <max$cmp_gt0000> created at line 180.
-    Found 32-bit comparator greater for signal <max$cmp_gt0001> created at line 194.
+    Found 32-bit comparator greater for signal <max$cmp_gt0000> created at line 189.
+    Found 32-bit comparator greater for signal <max$cmp_gt0001> created at line 203.
     Summary:
 	inferred   2 Finite State Machine(s).
 	inferred 240 D-type flip-flop(s).
@@ -441,7 +449,21 @@ Unit <Secuenciador> synthesized.
 
 
 Synthesizing Unit <CNC>.
-    Related source file is "M:/IS/CNC/CNC.vhd".
+    Related source file is "C:/CNC/CNC.vhd".
+    Found 8-bit register for signal <leds>.
+    Found 32-bit down counter for signal <CNT_LED>.
+    Found 32-bit comparator greater for signal <CNT_LED_0$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_1$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_2$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_3$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_4$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_5$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_6$cmp_gt0000> created at line 125.
+    Found 32-bit comparator greater for signal <CNT_LED_7$cmp_gt0000> created at line 125.
+    Summary:
+	inferred   8 Counter(s).
+	inferred   8 D-type flip-flop(s).
+	inferred   8 Comparator(s).
 Unit <CNC> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -456,29 +478,30 @@ Macro Statistics
  32x8-bit multiplier                                   : 3
  4x7-bit multiplier                                    : 1
  8x4-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 27
+# Adders/Subtractors                                   : 25
  14-bit subtractor                                     : 2
  2-bit adder                                           : 1
  32-bit adder                                          : 6
  32-bit subtractor                                     : 6
- 8-bit adder                                           : 4
+ 8-bit adder                                           : 2
  8-bit subtractor                                      : 2
  9-bit subtractor                                      : 6
-# Counters                                             : 3
+# Counters                                             : 11
  3-bit updown counter                                  : 3
-# Registers                                            : 73
- 1-bit register                                        : 26
+ 32-bit down counter                                   : 8
+# Registers                                            : 82
+ 1-bit register                                        : 34
  14-bit register                                       : 4
  2-bit register                                        : 4
  3-bit register                                        : 1
  32-bit register                                       : 15
- 4-bit register                                        : 1
+ 4-bit register                                        : 2
  8-bit register                                        : 22
-# Comparators                                          : 17
+# Comparators                                          : 25
  14-bit comparator greatequal                          : 2
  14-bit comparator less                                : 2
  32-bit comparator greatequal                          : 1
- 32-bit comparator greater                             : 7
+ 32-bit comparator greater                             : 15
  32-bit comparator less                                : 2
  8-bit comparator less                                 : 3
 # Multiplexers                                         : 2
@@ -523,14 +546,13 @@ Optimizing FSM <umotorz/recState/FSM> on signal <recState[1:5]> with one-hot enc
  stop    | 00100
 ---------------------
 Analyzing FSM <FSM_4> for best encoding.
-Optimizing FSM <uassembler/contador/FSM> on signal <contador[1:2]> with gray encoding.
+Optimizing FSM <uassembler/contador/FSM> on signal <contador[1:2]> with user encoding.
 -------------------
  State | Encoding
 -------------------
  00    | 00
  01    | 01
- 10    | 11
- 11    | 10
+ 10    | 10
 -------------------
 Analyzing FSM <FSM_3> for best encoding.
 Optimizing FSM <uassembler/estado/FSM> on signal <estado[1:10]> with one-hot encoding.
@@ -575,9 +597,9 @@ Optimizing FSM <uuart/recState/FSM> on signal <recState[1:2]> with user encoding
  wcenter | 01
  rec     | 10
 ---------------------
-WARNING:Xst:1710 - FF/Latch <i_btrans_4> (without init value) has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <i_btrans_5> (without init value) has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <i_btrans_7> (without init value) has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_btrans_4> has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_btrans_5> has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <i_btrans_7> has a constant value of 0 in block <uassembler>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <dist_z_8> of sequential type is unconnected in block <usecuenciador>.
 WARNING:Xst:2677 - Node <dist_z_9> of sequential type is unconnected in block <usecuenciador>.
 WARNING:Xst:2677 - Node <dist_z_10> of sequential type is unconnected in block <usecuenciador>.
@@ -751,23 +773,24 @@ Macro Statistics
  32x8-bit multiplier                                   : 3
  4x7-bit registered multiplier                         : 1
  8x4-bit registered multiplier                         : 1
-# Adders/Subtractors                                   : 27
+# Adders/Subtractors                                   : 25
  14-bit subtractor                                     : 2
  2-bit adder                                           : 1
  32-bit adder                                          : 6
  32-bit subtractor                                     : 6
- 8-bit adder                                           : 4
+ 8-bit adder                                           : 2
  8-bit subtractor                                      : 2
  9-bit subtractor                                      : 6
-# Counters                                             : 3
+# Counters                                             : 11
  3-bit updown counter                                  : 3
-# Registers                                            : 702
- Flip-Flops                                            : 702
-# Comparators                                          : 17
+ 32-bit down counter                                   : 8
+# Registers                                            : 714
+ Flip-Flops                                            : 714
+# Comparators                                          : 25
  14-bit comparator greatequal                          : 2
  14-bit comparator less                                : 2
  32-bit comparator greatequal                          : 1
- 32-bit comparator greater                             : 7
+ 32-bit comparator greater                             : 15
  32-bit comparator less                                : 2
  8-bit comparator less                                 : 3
 # Multiplexers                                         : 2
@@ -778,15 +801,11 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <uassembler/i_btrans_4> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_5> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_7> (without init value) has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <uassembler/i_btrans_4> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_5> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_7> has a constant value of 0 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <CNC> ...
-WARNING:Xst:1710 - FF/Latch <uassembler/i_btrans_0> (without init value) has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_1> (without init value) has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_3> (without init value) has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uassembler/i_btrans_6> (without init value) has a constant value of 1 in block <CNC>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <Motor> ...
 
@@ -796,7 +815,7 @@ Optimizing unit <Secuenciador> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block CNC, actual ratio is 18.
+Found area constraint ratio of 100 (+ 5) on block CNC, actual ratio is 22.
 
 Final Macro Processing ...
 
@@ -804,8 +823,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 704
- Flip-Flops                                            : 704
+# Registers                                            : 976
+ Flip-Flops                                            : 976
 
 =========================================================================
 
@@ -831,41 +850,43 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 16
+# IOs                              : 24
 
 Cell Usage :
-# BELS                             : 2746
+# BELS                             : 3645
 #      GND                         : 1
-#      INV                         : 210
-#      LUT1                        : 197
-#      LUT2                        : 204
-#      LUT2_L                      : 3
-#      LUT3                        : 290
+#      INV                         : 472
+#      LUT1                        : 205
+#      LUT2                        : 202
+#      LUT2_D                      : 4
+#      LUT2_L                      : 1
+#      LUT3                        : 291
 #      LUT3_D                      : 1
 #      LUT3_L                      : 8
-#      LUT4                        : 634
-#      LUT4_D                      : 8
-#      LUT4_L                      : 1
-#      MULT_AND                    : 4
-#      MUXCY                       : 680
-#      MUXF5                       : 22
+#      LUT4                        : 698
+#      LUT4_D                      : 11
+#      LUT4_L                      : 5
+#      MULT_AND                    : 2
+#      MUXCY                       : 993
+#      MUXF5                       : 20
 #      VCC                         : 1
-#      XORCY                       : 482
-# FlipFlops/Latches                : 704
-#      FD                          : 1
-#      FDC                         : 114
-#      FDCE                        : 70
-#      FDE                         : 503
+#      XORCY                       : 730
+# FlipFlops/Latches                : 976
+#      FD                          : 3
+#      FDC                         : 113
+#      FDCE                        : 71
+#      FDE                         : 506
 #      FDP                         : 5
 #      FDPE                        : 2
-#      FDR                         : 1
-#      FDRE                        : 6
-#      FDS                         : 2
+#      FDRE                        : 206
+#      FDRSE                       : 1
+#      FDS                         : 12
+#      FDSE                        : 57
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 15
+# IO Buffers                       : 23
 #      IBUF                        : 2
-#      OBUF                        : 13
+#      OBUF                        : 21
 # MULTs                            : 5
 #      MULT18X18SIO                : 5
 =========================================================================
@@ -875,11 +896,11 @@ Device utilization summary:
 
 Selected Device : 3s500efg320-4 
 
- Number of Slices:                      844  out of   4656    18%  
- Number of Slice Flip Flops:            704  out of   9312     7%  
- Number of 4 input LUTs:               1556  out of   9312    16%  
- Number of IOs:                          16
- Number of bonded IOBs:                  16  out of    232     6%  
+ Number of Slices:                     1058  out of   4656    22%  
+ Number of Slice Flip Flops:            976  out of   9312    10%  
+ Number of 4 input LUTs:               1898  out of   9312    20%  
+ Number of IOs:                          24
+ Number of bonded IOBs:                  24  out of    232    10%  
  Number of MULT18X18SIOs:                 5  out of     20    25%  
  Number of GCLKs:                         1  out of     24     4%  
 
@@ -904,7 +925,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 706   |
+clk                                | BUFGP                  | 978   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -920,8 +941,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 16.019ns (Maximum Frequency: 62.426MHz)
-   Minimum input arrival time before clock: 9.318ns
+   Minimum period: 15.488ns (Maximum Frequency: 64.566MHz)
+   Minimum input arrival time before clock: 9.374ns
    Maximum output required time after clock: 5.870ns
    Maximum combinational path delay: No path found
 
@@ -931,10 +952,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 16.019ns (frequency: 62.426MHz)
-  Total number of paths / destination ports: 1764735 / 1302
+  Clock period: 15.488ns (frequency: 64.566MHz)
+  Total number of paths / destination ports: 1634069 / 2000
 -------------------------------------------------------------------------
-Delay:               16.019ns (Levels of Logic = 48)
+Delay:               15.488ns (Levels of Logic = 48)
   Source:            uuart/ticks_1 (FF)
   Destination:       uuart/position_0 (FF)
   Source Clock:      clk rising
@@ -989,20 +1010,20 @@ Delay:               16.019ns (Levels of Logic = 48)
      MUXCY:CI->O           1   0.059   0.000  uuart/recState_cmp_eq00001_wg_cy<7> (uuart/recState_cmp_eq00001_wg_cy<7>)
      MUXCY:CI->O           1   0.059   0.000  uuart/recState_cmp_eq00001_wg_cy<8> (uuart/recState_cmp_eq00001_wg_cy<8>)
      MUXCY:CI->O           1   0.059   0.000  uuart/recState_cmp_eq00001_wg_cy<9> (uuart/recState_cmp_eq00001_wg_cy<9>)
-     MUXCY:CI->O           9   0.459   0.824  uuart/recState_cmp_eq00001_wg_cy<10> (uuart/recState_cmp_eq00001_wg_cy<10>)
-     LUT4:I3->O           12   0.704   0.965  uuart/recState_cmp_eq000133 (uuart/recState_cmp_eq0001)
-     LUT4_D:I3->O         31   0.704   1.266  uuart/position_mux0000<0>1 (N01)
-     LUT4:I3->O            1   0.704   0.000  uuart/position_mux0000<8>1 (uuart/position_mux0000<8>)
-     FDC:D                     0.308          uuart/position_8
+     MUXCY:CI->O          11   0.459   0.968  uuart/recState_cmp_eq00001_wg_cy<10> (uuart/recState_cmp_eq00001_wg_cy<10>)
+     LUT3:I2->O            3   0.704   0.535  uuart/recState_cmp_eq000132 (uuart/recState_cmp_eq0001)
+     LUT4_D:I3->O         15   0.704   1.021  uuart/position_mux0000<0>1 (N01)
+     LUT4:I3->O            1   0.704   0.000  uuart/position_mux0000<22>1 (uuart/position_mux0000<22>)
+     FDC:D                     0.308          uuart/position_22
     ----------------------------------------
-    Total                     16.019ns (10.361ns logic, 5.658ns route)
-                                       (64.7% logic, 35.3% route)
+    Total                     15.488ns (10.361ns logic, 5.127ns route)
+                                       (66.9% logic, 33.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 205 / 204
+  Total number of paths / destination ports: 209 / 208
 -------------------------------------------------------------------------
-Offset:              9.318ns (Levels of Logic = 5)
+Offset:              9.374ns (Levels of Logic = 5)
   Source:            reset (PAD)
   Destination:       usecuenciador/i_distancia_y_7 (FF)
   Destination Clock: clk rising
@@ -1011,19 +1032,19 @@ Offset:              9.318ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           185   1.218   1.486  reset_IBUF (reset_IBUF)
-     LUT3:I0->O            3   0.704   0.706  usecuenciador/i_instruccion_and00001 (usecuenciador/i_instruccion_and0000)
-     LUT3:I0->O            1   0.704   0.455  usecuenciador/i_coordenada_x_not00011_SW0 (N32)
+     IBUF:I->O           184   1.218   1.485  reset_IBUF (reset_IBUF)
+     LUT3:I0->O            4   0.704   0.762  usecuenciador/i_instruccion_and00001 (usecuenciador/i_instruccion_and0000)
+     LUT3:I0->O            1   0.704   0.455  usecuenciador/i_coordenada_x_not00011_SW0 (N23)
      LUT4:I2->O            5   0.704   0.808  usecuenciador/i_coordenada_x_not00011 (usecuenciador/div_state_not0001)
      LUT3:I0->O           72   0.704   1.275  usecuenciador/i_coordenada_x_not00012 (usecuenciador/i_coordenada_x_not0001)
      FDE:CE                    0.555          usecuenciador/i_coordenada_z_0
     ----------------------------------------
-    Total                      9.318ns (4.589ns logic, 4.729ns route)
-                                       (49.2% logic, 50.8% route)
+    Total                      9.374ns (4.589ns logic, 4.785ns route)
+                                       (49.0% logic, 51.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 37 / 13
+  Total number of paths / destination ports: 45 / 21
 -------------------------------------------------------------------------
 Offset:              5.870ns (Levels of Logic = 2)
   Source:            umotorx/step_0 (FF)
@@ -1044,12 +1065,12 @@ Offset:              5.870ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 129.00 secs
-Total CPU time to Xst completion: 128.92 secs
+Total REAL time to Xst completion: 149.00 secs
+Total CPU time to Xst completion: 149.44 secs
  
 --> 
 
-Total memory usage is 417244 kilobytes
+Total memory usage is 433544 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  164 (   0 filtered)

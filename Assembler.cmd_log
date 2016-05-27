@@ -20,3 +20,9 @@ vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -te
 spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
 vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
 spl2sym -intstyle ise -family spartan3e -w assembler.spl D:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl M:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl M:/IS/CNC/assembler.sym 
+vhdtdtfi -lib work Assembler.vhd -prj CNC -o assembler.spl -module assembler -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e -w assembler.spl M:/IS/CNC/assembler.sym 

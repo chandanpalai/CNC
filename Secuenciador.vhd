@@ -44,7 +44,10 @@ entity Secuenciador is
 		direccion_z		: out STD_LOGIC;
 		sending_order 	: out STD_LOGIC; -- Flag para notificar a los motores que se les manda una orden
 		reset_engines	: out STD_LOGIC; -- Flag para resetear los motores y pararlos
-		order_done 		: out STD_LOGIC -- Flag para señalar al ensamblador que se ha completado la orden
+		order_done 		: out STD_LOGIC; -- Flag para señalar al ensamblador que se ha completado la orden
+		coordenada_x_act : out std_logic_vector(7 downto 0);
+		coordenada_y_act : out std_logic_vector(7 downto 0);
+		coordenada_z_act : out std_logic_vector(7 downto 0)
 	);
 end Secuenciador; 
 
@@ -100,6 +103,10 @@ begin
 	reset_engines <= i_reset_engines;
 	sending_order <= i_sending_order;
 	
+	coordenada_x_act <= i_coordenada_x;
+	coordenada_y_act <= i_coordenada_y;
+	coordenada_z_act <= i_coordenada_z;
+	
 	div1 : divisor PORT MAP(
 		dividendo 	=> dividendo1,
 		divisor 		=> divisor1,
@@ -133,6 +140,7 @@ begin
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
 				order_done <= '0';
+				i_reset_engines <= '1';
 			elsif process_state = waiting_order and order_pending = '1' and i_sending_order = '0' then -- Se espera una orden y nos lo marcan en el flag
 				i_instruccion <= instruccion; -- Establecemos las variables
 				process_state := process_order;
@@ -144,6 +152,7 @@ begin
 					when "00" => -- R (reset)
 						-- Establecemos como coordenadas de destino el origen y ordenamos una recta hacia ellas
 						i_instruccion <= "01";
+						i_reset_engines <= '0';
 						i_coordenada_destino_x <= (others => '0');
 						i_coordenada_destino_y <= (others => '0');
 						i_coordenada_destino_z <= (others => '0');

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-05-26T22:16:51</DateModified>
+  <DateModified>2016-05-27T22:07:50</DateModified>
   <ModuleName>CNC</ModuleName>
-  <SummaryTimeStamp>2016-05-26T22:15:53</SummaryTimeStamp>
-  <SavedFilePath>M:/IS/CNC/iseconfig/CNC.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>M:/IS/CNC\</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2016-05-27T21:28:22</SummaryTimeStamp>
+  <SavedFilePath>C:/CNC/iseconfig/CNC.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/CNC\</ImplementationReportsDirectory>
   <DateInitialized>2016-05-25T21:43:28</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -34,6 +34,7 @@ entity CNC is
            tx : out  STD_LOGIC;
            clk : in  STD_LOGIC;
 			  reset : in STD_LOGIC;
+			  leds : out std_logic_vector(7 downto 0);
 			  bobina_x 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_y 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_z 	: out STD_LOGIC_VECTOR(3 downto 0)
@@ -67,7 +68,8 @@ architecture Behavioral of CNC is
            datox : out  std_logic_vector (7 downto 0);
            datoy : out  std_logic_vector (7 downto 0);
            datoz : out  std_logic_vector (7 downto 0);
-			  order_pending: out std_logic
+			  order_pending: out std_logic;
+			  traza : out	std_logic_vector(7 downto 0) := (others=>'0')
 		);
 	END COMPONENT;
 	COMPONENT Secuenciador
@@ -108,7 +110,28 @@ architecture Behavioral of CNC is
 	signal direccion_x, direccion_y, direccion_z : STD_LOGIC := '1';
 	signal brec, btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, distancia_z, velocidad_x, velocidad_y, velocidad_z : STD_LOGIC_VECTOR (7 downto 0) := (others=>'0');
 	signal instruccion : STD_LOGIC_VECTOR (1 downto 0) := "00";
+	
+		type LED_T is array(natural range<>) of integer;
+	signal CNT_LED	: LED_T(0 to 7) := (others=>0);
+	signal TRAZA : std_logic_vector(7 downto 0):= (others=>'0');
 begin
+
+	process(CLK)
+	begin
+		if rising_edge(CLK) then
+			for i in 0 to 7 loop
+				if TRAZA(i) = '1' then
+					CNT_LED(i) <= 500000;
+					LEDS(i) <= '1';
+				elsif CNT_LED(i) > 0 then
+					LEDS(i) <= '1';
+					CNT_LED(i) <= CNT_LED(i) -1;
+				else
+					LEDS(i) <= '0';
+				end if;
+			end loop;
+		end if;
+	end process;
 
 	uuart : UART PORT MAP (
 		rx => rx,
@@ -136,6 +159,7 @@ begin
 		DatoZ => coordenada_z,
 		reset => reset,
 		order_done => order_done,
+		traza => traza,
 		order_pending => order_pending
 	);
 	

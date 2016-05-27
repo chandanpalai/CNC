@@ -4,6 +4,7 @@ clk
 reset
 [Outputs]
 tx
+=leds[7:0]=
 =bobina_x[3:0]=
 =bobina_y[3:0]=
 =bobina_z[3:0]=

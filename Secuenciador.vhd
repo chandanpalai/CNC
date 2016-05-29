@@ -33,6 +33,7 @@ entity Secuenciador is
 		clk				: in STD_LOGIC; -- Reloj
 		rst				: in STD_LOGIC; -- Reset
 		order_pending 	: in STD_LOGIC; -- Flag de orden pendiente de procesar desde el ensamblador
+		halt 				: in STD_LOGIC; -- Flag de HALT
 		distancia_x 	: out  STD_LOGIC_VECTOR (7 downto 0); -- Distancia que tendra que recorrer el motor X
 		velocidad_x 	: out STD_LOGIC_VECTOR (7 downto 0); -- Velocidad del motor X (de 0 a 100)
 		direccion_x 	: out STD_LOGIC; -- Direccion de x (1 alante , 0 atras)
@@ -65,6 +66,7 @@ architecture Behavioral of Secuenciador is
 	signal i_velocidad_y : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 	signal i_velocidad_z : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 	signal i_reset_engines, i_sending_order : STD_LOGIC := '0';
+	signal i_order_done : STD_LOGIC := '0';
 	signal i_instruccion : STD_LOGIC_VECTOR(1 downto 0);
 	signal in_signal1, in_signal2, out_signal1, out_signal2 : STD_LOGIC := '0';
 	
@@ -73,8 +75,8 @@ architecture Behavioral of Secuenciador is
 	type division_states is (none, waiting, done); -- Estado de proceso de la division para la velocidad
 	
 	-- Variables para las dos divisiones
-	signal dividendo1, dividendo2 : STD_LOGIC_VECTOR(13 downto 0);
-	signal resultado1, resultado2, divisor1, divisor2: STD_LOGIC_VECTOR (7 downto 0);
+	signal dividendo1, dividendo2, resto1, resto2 : STD_LOGIC_VECTOR(13 downto 0);
+	signal resultado1, resultado2, divisor1, divisor2 : STD_LOGIC_VECTOR (7 downto 0);
 	
 	-- Componente divisor que se usa para la velocidad
 	component divisor 
@@ -106,6 +108,7 @@ begin
 	coordenada_x_act <= i_coordenada_x;
 	coordenada_y_act <= i_coordenada_y;
 	coordenada_z_act <= i_coordenada_z;
+	order_done <= i_order_done;
 	
 	div1 : divisor PORT MAP(
 		dividendo 	=> dividendo1,
@@ -113,7 +116,8 @@ begin
 		in_signal 	=> in_signal1,
 		clk 			=> clk,
 		resultado 	=> resultado1,
-		out_signal 	=> out_signal1
+		out_signal 	=> out_signal1,
+		resto => resto1
 	);
 	
 	div2 : divisor PORT MAP(
@@ -122,7 +126,8 @@ begin
 		in_signal 	=> in_signal2,
 		clk 			=> clk,
 		resultado 	=> resultado2,
-		out_signal 	=> out_signal2
+		out_signal 	=> out_signal2,
+		resto => resto2
 	);
 	
 	process (clk, rst)
@@ -139,9 +144,13 @@ begin
 			if rst = '1' and process_state /= process_reset and process_state /= order_finished then -- Si se ordena un reset y dicho reset no esta en proceso...
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
-				order_done <= '0';
+				i_order_done <= '0';
 				i_reset_engines <= '1';
-			elsif process_state = waiting_order and order_pending = '1' and i_sending_order = '0' then -- Se espera una orden y nos lo marcan en el flag
+			elsif halt = '1' and i_instruccion /= "11" then
+				i_instruccion <= "11";
+				process_state := process_order; 
+				i_order_done <= '0';
+			elsif process_state = waiting_order and order_pending = '1' and i_order_done = '0' and i_sending_order = '0' then -- Se espera una orden y nos lo marcan en el flag
 				i_instruccion <= instruccion; -- Establecemos las variables
 				process_state := process_order;
 				i_coordenada_destino_x <= coordenada_x;
@@ -239,20 +248,46 @@ begin
 						when done =>
 							-- Cuando se acaba la division leemos las velocidades
 							div_state := none;
+							
 							case max is
 								when x => 
 									i_velocidad_x <= std_logic_vector(to_unsigned(vel_x, i_velocidad_x'length));
-									i_velocidad_y <= std_logic_vector(unsigned(resultado1));
-									i_velocidad_z <= std_logic_vector(unsigned(resultado2));
+									if dist_y > 0 and unsigned(resultado1) = 0 then
+										i_velocidad_y <= "00000001";
+									else
+										i_velocidad_y <= resultado1;
+									end if;
+									if dist_z > 0 and unsigned(resultado2) = 0 then
+										i_velocidad_z <= "00000001";
+									else
+										i_velocidad_z <= resultado2;
+									end if;
 								when y =>
 									i_velocidad_y <= std_logic_vector(to_unsigned(vel_y, i_velocidad_y'length));
-									i_velocidad_x <= std_logic_vector(unsigned(resultado1));
-									i_velocidad_z <= std_logic_vector(unsigned(resultado2));
+									if dist_x > 0 and unsigned(resultado1) = 0 then
+										i_velocidad_x <= "00000001";
+									else
+										i_velocidad_x <= resultado1;
+									end if;
+									if dist_z > 0 and unsigned(resultado2) = 0 then
+										i_velocidad_z <= "00000001";
+									else
+										i_velocidad_z <= resultado2;
+									end if;
 								when z =>
 									i_velocidad_z <= std_logic_vector(to_unsigned(vel_z, i_velocidad_z'length));
-									i_velocidad_x <= std_logic_vector(unsigned(resultado1));
-									i_velocidad_y <= std_logic_vector(unsigned(resultado2));
+									if dist_x > 0 and unsigned(resultado1) = 0 then
+										i_velocidad_x <= "00000001";
+									else
+										i_velocidad_x <= resultado1;
+									end if;
+									if dist_y > 0 and unsigned(resultado2) < 1 then
+										i_velocidad_y <= "00000001";
+									else
+										i_velocidad_y <= resultado2;
+									end if;
 							end case;
+							
 							
 							-- Reiniciamos el divisor a 0
 							in_signal1 <= '0';
@@ -279,12 +314,19 @@ begin
 						process_state := waiting_order;
 				end case;
 			elsif process_state = order_finished then
-				if i_sending_order= '0' then
+				if i_sending_order= '0' and i_reset_engines = '0' then
 					-- Si se ha finalizado la orden y los motores han acabado su trabajo, enviamos la siguiente instruccion a los motores
 					i_sending_order <= '1';
 					-- Decimos que ya hemos terminado para que nos manden otra orden
-					order_done <= '1';
+					i_order_done <= '1';
 					i_reset_engines <= '0';
+				elsif i_reset_engines = '1' and processing_y = '0' and processing_z = '0' and i_sending_order = '0' then
+					-- Si se ha finalizado la orden y los motores han acabado su trabajo, enviamos la siguiente instruccion a los motores
+					i_sending_order <= '1';
+					-- Decimos que ya hemos terminado para que nos manden otra orden
+					i_order_done <= '1';
+					i_reset_engines <= '0';
+					i_sending_order <= '0';
 				end if;
 			end if;
 			if processing_x = '1' and processing_y = '1' and processing_z = '1' and i_sending_order = '1' then
@@ -292,7 +334,7 @@ begin
 				i_sending_order <= '0';
 			end if;
 			if order_pending = '0' then
-				order_done <= '0';
+				i_order_done <= '0';
 				process_state := waiting_order;
 			end if;
 		end if;

@@ -42,8 +42,9 @@ entity assembler is
            datoy : out  std_logic_vector (7 downto 0);
            datoz : out  std_logic_vector (7 downto 0);
 			  order_pending: out std_logic;
-			  traza : out	std_logic_vector(7 downto 0) := (others=>'0')
-			  );
+			  traza : out	std_logic_vector(7 downto 0) := (others=>'0');
+			  order_halt : out std_logic := '0'
+	);
 end assembler;
 
 architecture behavioral of assembler is
@@ -165,11 +166,9 @@ begin
 								estado<=waiting_to_send; -- Se va al estado waiting_to_send para informar de que se ya ha tratado la informacion recibida.
 							WHEN e_reset => --RESET
 								i_instruccion <= "00";
-								i_rec_done <= '1';
 								estado<=waiting_to_send;
 							WHEN halt => --HALT
-								i_instruccion <= "11";
-								i_rec_done <= '1';
+								order_halt <= '1';
 								estado<=waiting_to_send;
 							WHEN waiting_to_send =>
 								i_rec_done <= '1';

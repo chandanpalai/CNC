@@ -75,18 +75,18 @@ architecture Behavioral of Secuenciador is
 	type division_states is (none, waiting, done); -- Estado de proceso de la division para la velocidad
 	
 	-- Variables para las dos divisiones
-	signal dividendo1, dividendo2, resto1, resto2 : STD_LOGIC_VECTOR(13 downto 0);
+	signal dividendo1, dividendo2, resto1, resto2 : STD_LOGIC_VECTOR(14 downto 0);
 	signal resultado1, resultado2, divisor1, divisor2 : STD_LOGIC_VECTOR (7 downto 0);
 	
 	-- Componente divisor que se usa para la velocidad
 	component divisor 
 		PORT(
-			dividendo : in STD_LOGIC_VECTOR (13 downto 0);
+			dividendo : in STD_LOGIC_VECTOR (14 downto 0);
 			divisor : in STD_LOGIC_VECTOR (7 downto 0);
 			in_signal : in STD_LOGIC;			
 			clk : in STD_LOGIC;
 			resultado : out STD_LOGIC_VECTOR (7 downto 0); 
-			resto : out STD_LOGIC_VECTOR(13 downto 0);
+			resto : out STD_LOGIC_VECTOR(14 downto 0);
 			out_signal : out STD_LOGIC
 		);
 	end component;

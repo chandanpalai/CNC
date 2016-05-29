@@ -24,18 +24,18 @@ use IEEE.NUMERIC_STD.ALL;
 -- Divisor de dos vectores por restas sucesivas
 entity divisor is
 	Port ( 
-		dividendo	: in  STD_LOGIC_VECTOR (13 downto 0); -- dividendo
+		dividendo	: in  STD_LOGIC_VECTOR (14 downto 0); -- dividendo
 		in_signal 	: in STD_LOGIC; -- senal que marca el comienzo de la operacion
 		divisor 		: in  STD_LOGIC_VECTOR (7 downto 0); -- divisor
 		clk 			: in  STD_LOGIC; -- reloj
 		resultado 	: out  STD_LOGIC_VECTOR (7 downto 0); -- resultado de la operacion
 		out_signal 	: out STD_LOGIC; -- flag de completado
-		resto 		: out  STD_LOGIC_VECTOR (13 downto 0) -- resto de la operacion
+		resto 		: out  STD_LOGIC_VECTOR (14 downto 0) -- resto de la operacion
 	);
 end divisor;
 
 architecture Behavioral of divisor is
-	signal i_resto : STD_LOGIC_VECTOR (13 downto 0) := (others => '0');
+	signal i_resto : STD_LOGIC_VECTOR (14 downto 0) := (others => '0');
 	signal i_resultado : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 	signal i_out_signal : STD_LOGIC := '0';
 begin

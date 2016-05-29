@@ -161,11 +161,12 @@ begin
 					when "00" => -- R (reset)
 						-- Establecemos como coordenadas de destino el origen y ordenamos una recta hacia ellas
 						i_instruccion <= "01";
-						i_reset_engines <= '0';
+						i_reset_engines <= '1';
 						i_coordenada_destino_x <= (others => '0');
 						i_coordenada_destino_y <= (others => '0');
 						i_coordenada_destino_z <= (others => '0');
 					when "01" => -- S	(recta)
+						i_reset_engines <= '0';
 						case div_state is 
 							when none => -- Si aun no se esta calculando la velocidad quiere decir que esta empezando
 								-- Inicializamos las variables internas para hallar la distancia y velocidad

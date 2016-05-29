@@ -145,7 +145,7 @@ begin
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
 				i_order_done <= '0';
-			elsif halt = '1' and i_instruccion /= "11" then
+			elsif halt = '1' and i_instruccion /= "11" and order_pending = '1' then
 				i_instruccion <= "11";
 				process_state := process_order; 
 				i_order_done <= '0';

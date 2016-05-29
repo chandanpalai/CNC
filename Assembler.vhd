@@ -48,7 +48,7 @@ end assembler;
 
 architecture behavioral of assembler is
 
---variables , señales y tipos de datos.
+--variables , seales y tipos de datos.
 type state is ( waiting, processing, recta, calculo ,dx, dy, dz, waiting_to_send, e_reset, halt); --Se declara el tipo state para el automata de este bloque.
 type transmision is (espera, transmite1, transmite2); --Se declara el tipo transmision para el automata encargado de transmitir a la UART.
 
@@ -59,9 +59,9 @@ signal i_btrans : std_logic_vector (7 downto 0):=(others => '0'); --init
 signal i_rec_done, i_tstart, i_order_pending: std_logic:='0';
 signal i_instruccion: std_logic_vector (1 downto 0):="10"; --init
 
-constant letra_o: std_logic_vector (7 downto 0) := x"4b";
-constant letra_k: std_logic_vector(7 downto 0):= x"4f";
---variables y señales.
+constant letra_o: std_logic_vector (7 downto 0) := x"4f";
+constant letra_k: std_logic_vector(7 downto 0):= x"4b";
+--variables y seales.
 
 begin
 
@@ -84,6 +84,9 @@ begin
 	begin		
 		if reset = '0' then 
 			if (rising_edge(clk)) then
+				if order_done = '1' and i_order_pending = '1' then
+					i_order_pending <= '0';
+				end if;
 				if rec_pending = '0' then
 					i_rec_done <= '0';
 				elsif rec_pending = '1' and i_rec_done = '0' then -- se comprueba antes que rec_pending = 1 para continuar con el tratamiento del byte enviado.
@@ -91,8 +94,8 @@ begin
 						when waiting => 
 							if order_done = '0' and i_order_pending = '0' then
 								estado <= processing;
-							elsif order_done = '1' and i_order_pending = '1' then
-								i_order_pending <= '0';
+--							elsif order_done = '1' and i_order_pending = '1' then
+--								i_order_pending <= '0';
 							end if;
 						when processing => -- Se procesan los bytes enviados desde la UART.
 							CASE brec IS -- Conjunto de estados, cada uno con una instruccion a reconocer.

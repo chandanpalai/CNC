@@ -73,7 +73,8 @@ architecture Behavioral of CNC is
            datoy : out  std_logic_vector (7 downto 0);
            datoz : out  std_logic_vector (7 downto 0);
 			  order_pending: out std_logic;
-			  traza : out	std_logic_vector(7 downto 0) := (others=>'0')
+			  traza : out	std_logic_vector(7 downto 0) := (others=>'0');
+			  order_halt: out std_logic
 		);
 	END COMPONENT;
 	COMPONENT Secuenciador
@@ -98,7 +99,8 @@ architecture Behavioral of CNC is
 				reset_engines, order_done : out STD_LOGIC;
 				coordenada_x_act : out std_logic_vector(7 downto 0);
 				coordenada_y_act : out std_logic_vector(7 downto 0);
-				coordenada_z_act : out std_logic_vector(7 downto 0)
+				coordenada_z_act : out std_logic_vector(7 downto 0);
+				halt: in std_logic
 		);
 	END COMPONENT;
 	COMPONENT Motor
@@ -127,7 +129,7 @@ architecture Behavioral of CNC is
 	END COMPONENT;
 	
 	signal rec_pending, tdone, rec_done, tstart, order_pending, processing_x, 
-				processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
+				processing_y, processing_z, sending_order, order_done, reset_engines, halt: STD_LOGIC := '0';
 				
 	signal direccion_x, direccion_y, direccion_z : STD_LOGIC := '1';
 	
@@ -189,7 +191,8 @@ begin
 		reset => reset,
 		order_done => order_done,
 		traza => traza,
-		order_pending => order_pending
+		order_pending => order_pending,
+		order_halt => halt
 	);
 	
 	usecuenciador : Secuenciador PORT MAP(
@@ -217,7 +220,8 @@ begin
 		order_done => order_done,
 		coordenada_x_act => coordenada_x_act,
 		coordenada_y_act => coordenada_y_act,
-		coordenada_z_act => coordenada_z_act
+		coordenada_z_act => coordenada_z_act,
+		halt => halt
 	);
 	
 	umotorx : Motor PORT MAP(

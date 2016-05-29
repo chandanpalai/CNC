@@ -87,10 +87,11 @@ begin
 			if (rising_edge(clk)) then
 				if order_done = '1' and i_order_pending = '1' then
 					i_order_pending <= '0';
+					order_halt <= '0';
 				end if;
 				if rec_pending = '0' then
 					i_rec_done <= '0';
-				elsif rec_pending = '1' and i_rec_done = '0' then -- se comprueba antes que rec_pending = 1 para continuar con el tratamiento del byte enviado.
+				elsif estado = waiting_to_send or (rec_pending = '1' and i_rec_done = '0') then -- se comprueba antes que rec_pending = 1 para continuar con el tratamiento del byte enviado.
 					case estado is
 						when waiting => 
 							if order_done = '0' and i_order_pending = '0' then
@@ -102,7 +103,6 @@ begin
 							CASE brec IS -- Conjunto de estados, cada uno con una instruccion a reconocer.
 								WHEN "01010011" => --RECTA 01
 									estado<=recta;
-									i_rec_done <= '1';
 								WHEN "01010010" => --RESET 00
 									estado<= e_reset;
 								WHEN "01001000" => --HALT  11
@@ -110,6 +110,7 @@ begin
 								WHEN OTHERS => --OTHERS
 									estado<=waiting; --Estado de espera cuando lo recibido no se corresponda con el formato requerido.
 							end case;
+							i_rec_done <= '1';
 						when recta =>
 							i_instruccion<="01";
 							if Brec(7 downto 4) = "0011" then --se comprueba que lo enviado es un dato y no una instruccion.
@@ -163,6 +164,7 @@ begin
 								total:=resultado_entero1+resultado_entero2+resultado_entero3;
 								i_dato_z<=std_logic_vector(to_unsigned(total,i_dato_z'length)); -- Juntamos todos los valores obtenidos para obtener el valor del dato recibido en datoZ.
 								num_datos := 0;
+								i_rec_done <= '1';
 								estado<=waiting_to_send; -- Se va al estado waiting_to_send para informar de que se ya ha tratado la informacion recibida.
 							WHEN e_reset => --RESET
 								i_instruccion <= "00";
@@ -171,7 +173,6 @@ begin
 								order_halt <= '1';
 								estado<=waiting_to_send;
 							WHEN waiting_to_send =>
-								i_rec_done <= '1';
 								i_order_pending <= '1';
 								estado <= waiting;
 							WHEN OTHERS =>

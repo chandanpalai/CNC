@@ -210,7 +210,7 @@ begin
 									direccion_z <= '0';
 								end if;
 								
-								if dist_z > dist_y and max = y then
+								if dist_z > dist_y and dist_z > dist_x then
 									max:= z;
 								end if;
 								
@@ -310,6 +310,7 @@ begin
 					when "11" => -- H (halt)
 						-- La orden para los motores
 						i_reset_engines <= '1';
+						i_sending_order <= '0';
 						process_state := order_finished;
 					when others =>
 						process_state := waiting_order;
@@ -326,6 +327,7 @@ begin
 					i_order_done <= '1';
 					i_reset_engines <= '0';
 					i_sending_order <= '0';
+					process_state := waiting_order;
 				end if;
 			end if;
 			if processing_x = '1' and processing_y = '1' and processing_z = '1' and i_sending_order = '1' then

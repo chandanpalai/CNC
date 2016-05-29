@@ -81,6 +81,8 @@ ARCHITECTURE behavior OF CNC_TB IS
 	constant datoZ1 : std_logic_vector(7 downto 0) := X"30";
 	constant datoZ2 : std_logic_vector(7 downto 0) := X"34";
 	constant datoZ3 : std_logic_vector(7 downto 0) := X"37";
+	
+	constant zero	: std_logic_vector(7 downto 0) := X"30";
  
 BEGIN
  
@@ -209,7 +211,104 @@ BEGIN
 		rx <= '1';
 		wait for (2*TBIT);
 		
-		wait for clk_period*1000000;
+		wait for clk_period*10;
+		-- enviamos la instruccion
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= instruccion(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		-- enviamos X
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		-- Enviamos y
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		-- Enviamos z
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		rx <= '0';
+		wait for TBIT;
+		for i in 0 to 7 loop
+			rx <= zero(i);
+			wait for TBIT;
+		end loop;
+		rx <= '1';
+		wait for (2*TBIT);
+		
+		wait for clk_period*1000;
 		assert false report "Fin test" severity failure;
    end process;
 

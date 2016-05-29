@@ -145,7 +145,6 @@ begin
 				i_instruccion <= "00"; -- Se ejecuta la instruccion reset
 				process_state := process_order; 
 				i_order_done <= '0';
-				i_reset_engines <= '1';
 			elsif halt = '1' and i_instruccion /= "11" then
 				i_instruccion <= "11";
 				process_state := process_order; 
@@ -156,6 +155,7 @@ begin
 				i_coordenada_destino_x <= coordenada_x;
 				i_coordenada_destino_y <= coordenada_y;
 				i_coordenada_destino_z <= coordenada_z;
+				i_reset_engines <= '0';
 			elsif process_state = process_order or process_state = process_reset then
 				case i_instruccion is
 					when "00" => -- R (reset)

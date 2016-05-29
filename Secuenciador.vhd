@@ -320,9 +320,7 @@ begin
 					-- Decimos que ya hemos terminado para que nos manden otra orden
 					i_order_done <= '1';
 					i_reset_engines <= '0';
-				elsif i_reset_engines = '1' and processing_y = '0' and processing_z = '0' and i_sending_order = '0' then
-					-- Si se ha finalizado la orden y los motores han acabado su trabajo, enviamos la siguiente instruccion a los motores
-					i_sending_order <= '1';
+				elsif i_reset_engines = '1' and processing_y = '0' and processing_z = '0' and processing_x = '0' then
 					-- Decimos que ya hemos terminado para que nos manden otra orden
 					i_order_done <= '1';
 					i_reset_engines <= '0';

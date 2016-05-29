@@ -31,3 +31,13 @@ NET "leds[3]" LOC = F11;
 NET "leds[2]" LOC = E11;
 NET "leds[1]" LOC = E12;
 NET "leds[0]" LOC = F12;
+
+
+NET "LCD_E" LOC = "M18";
+NET "LCD_RS" LOC = "L18";
+NET "LCD_Wn" LOC = "L17";
+# The LCD four-bit data interface is shared with the StrataFlash.
+NET "LCD_D<0>" LOC = "R15";
+NET "LCD_D<1>" LOC = "R16";
+NET "LCD_D<2>" LOC = "P17";
+NET "LCD_D<3>" LOC = "M15";

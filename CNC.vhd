@@ -35,6 +35,10 @@ entity CNC is
            clk : in  STD_LOGIC;
 			  reset : in STD_LOGIC;
 			  leds : out std_logic_vector(7 downto 0);
+			  LCD_D  : out  STD_LOGIC_VECTOR (3 downto 0);
+           LCD_E  : out  STD_LOGIC;
+           LCD_RS : out  STD_LOGIC;
+           LCD_Wn : out  STD_LOGIC;
 			  bobina_x 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_y 	: out STD_LOGIC_VECTOR(3 downto 0);
 			  bobina_z 	: out STD_LOGIC_VECTOR(3 downto 0)
@@ -91,7 +95,10 @@ architecture Behavioral of CNC is
 				velocidad_z : out STD_LOGIC_VECTOR (7 downto 0);
 				direccion_z: out STD_LOGIC;
 				sending_order : out STD_LOGIC;
-				reset_engines, order_done : out STD_LOGIC
+				reset_engines, order_done : out STD_LOGIC;
+				coordenada_x_act : out std_logic_vector(7 downto 0);
+				coordenada_y_act : out std_logic_vector(7 downto 0);
+				coordenada_z_act : out std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
 	COMPONENT Motor
@@ -106,10 +113,32 @@ architecture Behavioral of CNC is
 			bobina 	: out STD_LOGIC_VECTOR(3 downto 0)
 		);
 	END COMPONENT;
-	signal rec_pending, tdone, rec_done, tstart, order_pending, processing_x, processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
+	
+	COMPONENT lcd
+    Port ( CLK 	  : in   STD_LOGIC;
+           RST 	  : in   STD_LOGIC;
+		   datoX  : in	std_logic_vector(7 downto 0) := (others=>'0');
+		   datoY  : in	std_logic_vector(7 downto 0) := (others=>'0');
+		   datoZ  : in	std_logic_vector(7 downto 0) := (others=>'0');
+           LCD_D  : out  STD_LOGIC_VECTOR (3 downto 0);
+           LCD_E  : out  STD_LOGIC;
+           LCD_RS : out  STD_LOGIC;
+           LCD_Wn : out  STD_LOGIC);
+	END COMPONENT;
+	
+	signal rec_pending, tdone, rec_done, tstart, order_pending, processing_x, 
+				processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
+				
 	signal direccion_x, direccion_y, direccion_z : STD_LOGIC := '1';
-	signal brec, btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, distancia_z, velocidad_x, velocidad_y, velocidad_z : STD_LOGIC_VECTOR (7 downto 0) := (others=>'0');
+	
+	signal brec, btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, 
+			distancia_z, velocidad_x, velocidad_y, velocidad_z : STD_LOGIC_VECTOR (7 downto 0) := (others=>'0');
+			
 	signal instruccion : STD_LOGIC_VECTOR (1 downto 0) := "00";
+	
+	signal coordenada_x_act :  std_logic_vector(7 downto 0);
+	signal coordenada_y_act :  std_logic_vector(7 downto 0);
+	signal coordenada_z_act :  std_logic_vector(7 downto 0);
 	
 		type LED_T is array(natural range<>) of integer;
 	signal CNT_LED	: LED_T(0 to 7) := (others=>0);
@@ -185,7 +214,10 @@ begin
 		direccion_z => direccion_z,
 		sending_order => sending_order,
 		reset_engines => reset_engines,
-		order_done => order_done
+		order_done => order_done,
+		coordenada_x_act => coordenada_x_act,
+		coordenada_y_act => coordenada_y_act,
+		coordenada_z_act => coordenada_z_act
 	);
 	
 	umotorx : Motor PORT MAP(
@@ -198,6 +230,9 @@ begin
 		Proc     => processing_x,
 		bobina 	=> bobina_x
 	);
+	
+--	TRAZA(0) <= sending_order;
+--	TRAZA(1) <= not sending_order;
 	
 	umotory : Motor PORT MAP(
 		CLK		=> clk,
@@ -221,5 +256,19 @@ begin
 		bobina 	=> bobina_z
 	);
 
+	UDISP : lcd
+    Port map(
+		CLK		=> clk,
+      RST 		=> reset_engines,
+		datoX  	=> coordenada_x_act,
+		datoY  	=> coordenada_y_act,
+		datoZ  	=> coordenada_z_act,
+      LCD_D  	=> LCD_D,
+      LCD_E  	=> LCD_E,
+      LCD_RS 	=> LCD_RS,
+      LCD_Wn 	=> LCD_Wn
+	);
+	
+	
 end Behavioral;
 

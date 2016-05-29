@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -74,7 +75,7 @@ architecture Behavioral of CNC is
            datoz : out  std_logic_vector (7 downto 0);
 			  order_pending: out std_logic;
 			  traza : out	std_logic_vector(7 downto 0) := (others=>'0');
-			  order_halt: out std_logic
+			  order_halt : out std_logic := '0'
 		);
 	END COMPONENT;
 	COMPONENT Secuenciador
@@ -86,6 +87,7 @@ architecture Behavioral of CNC is
 				processing_y : in STD_LOGIC;
 				processing_z : in STD_LOGIC;
 				clk, rst, order_pending : in STD_LOGIC;
+				halt 				: in STD_LOGIC;
 				distancia_x : out  STD_LOGIC_VECTOR (7 downto 0);
 				velocidad_x : out STD_LOGIC_VECTOR (7 downto 0);
 				direccion_x : out STD_LOGIC;
@@ -99,8 +101,7 @@ architecture Behavioral of CNC is
 				reset_engines, order_done : out STD_LOGIC;
 				coordenada_x_act : out std_logic_vector(7 downto 0);
 				coordenada_y_act : out std_logic_vector(7 downto 0);
-				coordenada_z_act : out std_logic_vector(7 downto 0);
-				halt: in std_logic
+				coordenada_z_act : out std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
 	COMPONENT Motor
@@ -129,8 +130,10 @@ architecture Behavioral of CNC is
 	END COMPONENT;
 	
 	signal rec_pending, tdone, rec_done, tstart, order_pending, processing_x, 
-				processing_y, processing_z, sending_order, order_done, reset_engines, halt: STD_LOGIC := '0';
+				processing_y, processing_z, sending_order, order_done, reset_engines: STD_LOGIC := '0';
 				
+	signal halt 				: STD_LOGIC;	
+	
 	signal direccion_x, direccion_y, direccion_z : STD_LOGIC := '1';
 	
 	signal brec, btrans, coordenada_x, coordenada_y, coordenada_z, distancia_x, distancia_y, 
@@ -145,8 +148,17 @@ architecture Behavioral of CNC is
 		type LED_T is array(natural range<>) of integer;
 	signal CNT_LED	: LED_T(0 to 7) := (others=>0);
 	signal TRAZA : std_logic_vector(7 downto 0):= (others=>'0');
+	signal TRAZA1 : std_logic_vector(7 downto 0):= (others=>'0');
+	
 begin
 
+	TRAZA(7) <= TRAZA1(7);
+	TRAZA(2 downto 0) <= TRAZA1(2 downto 0);
+	TRAZA(3) <= sending_order;
+	TRAZA(4) <= reset_engines; --'1' when unsigned(velocidad_x) < 10;
+	TRAZA(5) <= halt; -- '1' when unsigned(velocidad_y) < 10;
+	TRAZA(6) <= processing_z; -- '1' when unsigned(velocidad_z) < 10;
+	
 	process(CLK)
 	begin
 		if rising_edge(CLK) then
@@ -190,9 +202,9 @@ begin
 		DatoZ => coordenada_z,
 		reset => reset,
 		order_done => order_done,
-		traza => traza,
-		order_pending => order_pending,
-		order_halt => halt
+		traza => traza1,
+		order_halt => halt,
+		order_pending => order_pending
 	);
 	
 	usecuenciador : Secuenciador PORT MAP(
@@ -206,6 +218,7 @@ begin
 		clk => clk,
 		rst => reset,
 		order_pending => order_pending,
+		halt			=> halt,
 		distancia_x => distancia_x,
 		velocidad_x => velocidad_x,
 		direccion_x => direccion_x,
@@ -220,8 +233,7 @@ begin
 		order_done => order_done,
 		coordenada_x_act => coordenada_x_act,
 		coordenada_y_act => coordenada_y_act,
-		coordenada_z_act => coordenada_z_act,
-		halt => halt
+		coordenada_z_act => coordenada_z_act
 	);
 	
 	umotorx : Motor PORT MAP(
@@ -263,10 +275,10 @@ begin
 	UDISP : lcd
     Port map(
 		CLK		=> clk,
-      RST 		=> reset_engines,
-		datoX  	=> coordenada_x_act,
+      RST 		=> reset,
+		datoX  	=> coordenada_x_act, 
 		datoY  	=> coordenada_y_act,
-		datoZ  	=> coordenada_z_act,
+		datoZ  	=> coordenada_z_act, 
       LCD_D  	=> LCD_D,
       LCD_E  	=> LCD_E,
       LCD_RS 	=> LCD_RS,

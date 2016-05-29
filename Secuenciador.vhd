@@ -45,7 +45,7 @@ entity Secuenciador is
 		direccion_z		: out STD_LOGIC;
 		sending_order 	: out STD_LOGIC; -- Flag para notificar a los motores que se les manda una orden
 		reset_engines	: out STD_LOGIC; -- Flag para resetear los motores y pararlos
-		order_done 		: out STD_LOGIC; -- Flag para señalar al ensamblador que se ha completado la orden
+		order_done 		: out STD_LOGIC; -- Flag para seÃ±alar al ensamblador que se ha completado la orden
 		coordenada_x_act : out std_logic_vector(7 downto 0);
 		coordenada_y_act : out std_logic_vector(7 downto 0);
 		coordenada_z_act : out std_logic_vector(7 downto 0)
@@ -340,6 +340,6 @@ begin
 			end if;
 		end if;
 	end process;
-
+	
 end Behavioral;
 

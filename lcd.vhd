@@ -9,7 +9,8 @@
 -- Target Devices: 
 -- Tool versions: 
 -- Description: 
---
+--		Manejo display de xilinx para presentar coordenadas.
+--		Iniciacion y manejo segun recomendaciones de Xilinx.
 -- Dependencies: 
 --
 -- Revision: 
@@ -32,15 +33,17 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity lcd is
-    Port ( CLK 	  : in   STD_LOGIC;
-           RST 	  : in   STD_LOGIC;
-		   datoX  : in	std_logic_vector(7 downto 0) := (others=>'0');
-		   datoY  : in	std_logic_vector(7 downto 0) := (others=>'0');
-		   datoZ  : in	std_logic_vector(7 downto 0) := (others=>'0');
-           LCD_D  : out  STD_LOGIC_VECTOR (3 downto 0);
-           LCD_E  : out  STD_LOGIC;
-           LCD_RS : out  STD_LOGIC;
-           LCD_Wn : out  STD_LOGIC);
+    Port ( 
+		CLK 	 : in   STD_LOGIC;												--Reloj.
+      RST 	 : in   STD_LOGIC;												--Reset.
+		datoX  : in	std_logic_vector(7 downto 0) := (others=>'0');	--Coordenadas en la X.
+		datoY  : in	std_logic_vector(7 downto 0) := (others=>'0');	--Coordenadas en la Y.
+		datoZ  : in	std_logic_vector(7 downto 0) := (others=>'0');	--Coordenadas en la Z.
+		-- Interfaz Display.
+      LCD_D  : out  STD_LOGIC_VECTOR (3 downto 0);						--Salida de datos al display.
+      LCD_E  : out  STD_LOGIC;												--Enable de Escritura/Lectura del display.
+      LCD_RS : out  STD_LOGIC;												--Comandos o Datos.
+      LCD_Wn : out  STD_LOGIC);												--Escritura o Lectura.
 end lcd;
 
 architecture Behavioral of lcd is
@@ -53,8 +56,7 @@ architecture Behavioral of lcd is
 		fincnv : out std_logic;
 		ASCII_0 : out std_logic_vector(7 downto 0);
 		ASCII_1 : out std_logic_vector(7 downto 0);
-		ASCII_2 : out std_logic_vector(7 downto 0)
-		);
+		ASCII_2 : out std_logic_vector(7 downto 0));
 	end component;
 
 	type MAQLCD_t is (INI,INI1,INI2,INI3,INI4,INI5,INI6,INI7,INI8,INI9,INI10,
@@ -70,14 +72,13 @@ architecture Behavioral of lcd is
 
 	signal Wake : std_logic := '0';
 
-	signal TmpVel	:	std_logic_vector(7 downto 0):= (others=>'0');
-
 	-- interfaz proceso envio.
 	signal Done : std_logic := '0';
 	signal Start : std_logic := '0';
 	signal Aux	:	std_logic_vector(7 downto 0);
 	signal RS : std_logic := '0';
 
+	-- Coordenadas ultimas.
 	signal TempX	:	std_logic_vector(7 downto 0):= (others=>'0');
 	signal TempY	:	std_logic_vector(7 downto 0):= (others=>'0');
 	signal TempZ	:	std_logic_vector(7 downto 0):= (others=>'0');
@@ -107,8 +108,12 @@ begin
 			START <= '0';
 			startcnv <= '0';
 			RS <= '0';
+			TempX <= (others=>'0');
+			TempY <= (others=>'0');
+			TempZ <= (others=>'0');
 		elsIF rising_edge(CLK) THEN
 			case DISPST is
+				-- Iniciacion del Dispositivo y dibujado de caratula.
 				when WHW =>
 					START <= '0';
 					if Wake = '1' then
@@ -119,7 +124,7 @@ begin
 					AUX <= X"28";
 					Start <= '1';
 					DISPST <= INIDISP1;
-				when INIDISP1 =>	-- Esperar por el otro proceso
+				when INIDISP1 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						DISPST <= INIDISP2;
@@ -130,7 +135,7 @@ begin
 						Start <= '1';
 						DISPST <= INIDISP3;		
 					end if;
-				when INIDISP3 =>	-- Esperar por el otro proceso
+				when INIDISP3 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						DISPST <= INIDISP4;
@@ -141,7 +146,7 @@ begin
 						Start <= '1';
 						DISPST <= INIDISP5;		
 					end if;
-				when INIDISP5 =>	-- Esperar por el otro proceso
+				when INIDISP5 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						DISPST <= INIDISP6;
@@ -152,23 +157,24 @@ begin
 						Start <= '1';
 						DISPST <= INIDISP7;		
 					end if;	
-				when INIDISP7 =>	-- Esperar por el otro proceso
+				when INIDISP7 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						TICKS := 0;
 						DISPST <= INIDISP8;
 					end if;	
-				when INIDISP8 =>	-- Espera por ejecucion CLEAR DISPLAY
+				when INIDISP8 =>	-- Espera por ejecucion CLEAR DISPLAY.
 					if TICKS > 82000 then
 						DISPST <= WCARATULA;
 					else
 						TICKS := TICKS + 1;
 					end if;
-				when WCARATULA =>	-- Address 0, primera linea de caratula
+				-- Inicia de Caratula-----------------------------------
+				when WCARATULA =>	-- Address 0, primera linea de caratula.
 					AUX <= X"80";
 					Start <= '1';
 					DISPST <= WCARATULA1;	
-				when WCARATULA1 =>	-- Esperar por el otro proceso
+				when WCARATULA1 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						INDEX := 1;
@@ -181,7 +187,7 @@ begin
 						Start <= '1';
 						DISPST <= WCARATULA3;		
 					end if;
-				when WCARATULA3 =>	-- Esperar por el otro proceso
+				when WCARATULA3 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						INDEX := INDEX+1;
@@ -191,14 +197,14 @@ begin
 							DISPST <= WCARATULA2;
 						end if;
 					end if;
-				when WCARATULA4 =>	-- Address 40, segunda linea de caratula
+				when WCARATULA4 =>	-- Address 40, segunda linea de caratula.
 					if Done = '0' then
 						AUX <= X"C0";
 						RS <= '0';
 						Start <= '1';
 						DISPST <= WCARATULA5;	
 					end if;
-				when WCARATULA5 =>	-- Esperar por el otro proceso
+				when WCARATULA5 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						INDEX := 1;
@@ -211,7 +217,7 @@ begin
 						Start <= '1';
 						DISPST <= WCARATULA7;		
 					end if;
-				when WCARATULA7 =>	-- Esperar por el otro proceso
+				when WCARATULA7 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						RS <= '0';
@@ -221,29 +227,30 @@ begin
 						else
 							DISPST <= WCARATULA6;
 						end if;
-					end if;			
-				when WATCHINGX =>		--Esperar cambio en los datos de X
+					end if;
+				-- Refresco de nuevos datos de coordenadas.-------------------
+				when WATCHINGX =>		--Comprueba si ha cambio en los datos de X.
 					if TempX /= datoX then
 						TempX <= datoX;
 						DISPST <= ProcX;
 					else
 						DISPST <= WATCHINGY;
 					end if;
-				when WATCHINGY =>		--Esperar cambio en los datos de Y
+				when WATCHINGY =>		--Comprueba si ha cambio en los datos de Y.
 					if TempY /= datoY then
 						TempY <= datoY;
 						DISPST <= ProcY;
 					else
 						DISPST <= WATCHINGZ;
 					end if;
-				when WATCHINGZ =>		--Esperar cambio en los datos de Z
+				when WATCHINGZ =>		--Comprueba si ha cambio en los datos de Z.
 					if TempZ /= datoZ then
 						TempZ <= datoZ;
 						DISPST <= ProcZ;
 					else
 						DISPST <= WATCHINGX;
 					end if;
-				when ProcX =>	--Address 03, dato x (80+3)
+				when ProcX =>	--Address 03, dato x (80+3).
 					if Done = '0' then
 						AUX <= X"83";
 						RS <= '0';
@@ -252,21 +259,21 @@ begin
 						startcnv <= '1';
 						DISPST <= ProcX2;
 					end if;
-				when ProcX2 =>	-- Esperar por el otro proceso
+				when ProcX2 =>	-- Esperar por el otro proceso.
 					if Done = '1' and fincnv = '1' then
 						Start <= '0';
 						startcnv <= '0';
 						INDEX := 2;
 						DISPST <= ProcX3;
 					end if;	
-				when ProcX3 =>	-- Siguiente caracter x
+				when ProcX3 =>	-- Siguiente caracter x.
 					if Done = '0' then  
 						AUX <= ASCII(INDEX);
 						RS <= '1';
 						Start <= '1';
 						DISPST <= ProcX4;		
 					end if;
-				when ProcX4 =>	-- Esperar por el otro proceso
+				when ProcX4 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						RS <= '0';
@@ -277,7 +284,7 @@ begin
 						end if;
 						INDEX := INDEX-1;
 					end if;	
-				when ProcY =>	--Address 0B, dato y (80+0B)
+				when ProcY =>	--Address 0B, dato y (80+0B).
 					if Done = '0' then
 						AUX <= X"8B";
 						RS <= '0';
@@ -286,21 +293,21 @@ begin
 						startcnv <= '1';
 						DISPST <= ProcY2;
 					end if;
-				when ProcY2 =>	-- Esperar por el otro proceso
+				when ProcY2 =>	-- Esperar por el otro proceso.
 					if Done = '1' and fincnv = '1' then
 						Start <= '0';
 						startcnv <= '0';
 						INDEX := 2;
 						DISPST <= ProcY3;
 					end if;	
-				when ProcY3 =>	-- Siguiente caracter Y
+				when ProcY3 =>	-- Siguiente caracter Y.
 					if Done = '0' then  
 						AUX <= ASCII(INDEX);
 						RS <= '1';
 						Start <= '1';
 						DISPST <= ProcY4;		
 					end if;
-				when ProcY4 =>	-- Esperar por el otro proceso
+				when ProcY4 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						RS <= '0';
@@ -311,7 +318,7 @@ begin
 						end if;
 						INDEX := INDEX-1;
 					end if;	
-				when ProcZ => --Address 43, dato z (80+43)
+				when ProcZ => --Address 43, dato z (80+43).
 					if Done = '0' then
 						AUX <= X"C3";
 						Start <= '1';
@@ -320,21 +327,21 @@ begin
 						startcnv <= '1';
 						DISPST <= ProcZ2;
 					end if;
-				when ProcZ2 =>	-- Esperar por el otro proceso
+				when ProcZ2 =>	-- Esperar por el otro proceso.
 					if Done = '1' and fincnv = '1' then
 						Start <= '0';
 						startcnv <= '0';
 						INDEX := 2;
 						DISPST <= ProcZ3;
 					end if;		
-				when ProcZ3 =>	-- Siguiente caracter z
+				when ProcZ3 =>	-- Siguiente caracter z.
 					if Done = '0' then  
 						AUX <= ASCII(INDEX);
 						RS <= '1';
 						Start <= '1';
 						DISPST <= ProcZ4;		
 					end if;
-				when ProcZ4 =>	-- Esperar por el otro proceso
+				when ProcZ4 =>	-- Esperar por el otro proceso.
 					if Done = '1' then
 						Start <= '0';
 						RS <= '0';
@@ -353,6 +360,7 @@ begin
 
 
 	-- Proceso de iniciacion HW display y escritura DISPLAY.
+	-- Pone el display en modo 4 bits.
 	process(CLK,RST)
 		variable TICKS		: integer := 0;
 	begin
@@ -364,8 +372,8 @@ begin
 			DONE <= '0';
 			Wake <= '0';
 		elsif rising_edge(CLK) then
-			case STLCD is
-				when INI =>			-- Esperar 15 ms.
+			case STLCD is						--Inicializacion y configuracion del display.
+				when INI =>			-- Esperar 15 ms.			
 					if TICKS > 750000 then
 						LCD_D <= X"3";
 						LCD_RS <= '0';
@@ -439,7 +447,8 @@ begin
 						STLCD <= IDLE;
 					else
 						TICKS := TICKS + 1;
-					end if;		
+					end if;									--Fin de la inicializacion y configuracion del display.
+				-- Envio datos y comandos al display solicitados por otro proceso.-------------------
 				when IDLE =>		--Esperar orden y mandar High.
 					Wake <= '1';
 					DONE <= '0';
@@ -496,7 +505,7 @@ begin
 		end if;
 	end process;
 
-	U1 : CNVASCII	--Componente para transformar Binario en ASCII    
+	U1 : CNVASCII	--Componente para transformar Binario en ASCII.   
 	port map(
 		CLK => CLK,
 		dato => datobin,

@@ -102,6 +102,7 @@ begin
 							CASE brec IS -- Conjunto de estados, cada uno con una instruccion a reconocer.
 								WHEN "01010011" => --RECTA 01
 									estado<=recta;
+									i_rec_done <= '1';
 								WHEN "01010010" => --RESET 00
 									estado<= e_reset;
 								WHEN "01001000" => --HALT  11
@@ -109,7 +110,6 @@ begin
 								WHEN OTHERS => --OTHERS
 									estado<=waiting; --Estado de espera cuando lo recibido no se corresponda con el formato requerido.
 							end case;
-							i_rec_done <= '1';
 						when recta =>
 							i_instruccion<="01";
 							if Brec(7 downto 4) = "0011" then --se comprueba que lo enviado es un dato y no una instruccion.

@@ -70,17 +70,17 @@ ARCHITECTURE behavior OF CNC_TB IS
 	constant TBIT	: time := 1 sec/9600;	
 	
 	constant instruccion : std_logic_vector(7 downto 0) := X"53";
-	constant datoX1 : std_logic_vector(7 downto 0) := X"30";
+	constant datoX1 : std_logic_vector(7 downto 0) := X"31";
 	constant datoX2 : std_logic_vector(7 downto 0) := X"32";
 	constant datoX3 : std_logic_vector(7 downto 0) := X"33";
 	
-	constant datoY1 : std_logic_vector(7 downto 0) := X"30";
-	constant datoY2 : std_logic_vector(7 downto 0) := X"35";
-	constant datoY3 : std_logic_vector(7 downto 0) := X"36";
+	constant datoY1 : std_logic_vector(7 downto 0) := X"31";
+	constant datoY2 : std_logic_vector(7 downto 0) := X"32";
+	constant datoY3 : std_logic_vector(7 downto 0) := X"33";
 	
-	constant datoZ1 : std_logic_vector(7 downto 0) := X"30";
-	constant datoZ2 : std_logic_vector(7 downto 0) := X"34";
-	constant datoZ3 : std_logic_vector(7 downto 0) := X"37";
+	constant datoZ1 : std_logic_vector(7 downto 0) := X"31";
+	constant datoZ2 : std_logic_vector(7 downto 0) := X"32";
+	constant datoZ3 : std_logic_vector(7 downto 0) := X"33";
 	
 	constant zero	: std_logic_vector(7 downto 0) := X"30";
  
@@ -308,7 +308,7 @@ BEGIN
 		rx <= '1';
 		wait for (2*TBIT);
 		
-		wait for clk_period*1000;
+		wait for clk_period*1000000;
 		assert false report "Fin test" severity failure;
    end process;
 

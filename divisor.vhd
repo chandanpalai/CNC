@@ -58,7 +58,7 @@ begin
 					i_resto <= std_logic_vector(unsigned(i_resto) - unsigned(divisor));
 					contador := contador +1;
 				end if;
-			elsif divisor = "00000000" then
+			elsif in_signal = '1' and divisor = "00000000" then
 				-- si la division es por cero marcamos como completado y salimos
 				i_out_signal <= '1';
 			elsif i_out_signal = '1' and in_signal = '0' then
